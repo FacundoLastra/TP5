@@ -2,11 +2,9 @@
 
 -----------------------------------------------------------------------------
 
-## Consigna
+###### Para una aerolínea muy conocida , se nos requiere realizar una API REST para el mantenimiento de rutas de vuelos y los precios correspondientes.
 
-###### *Para una aerolínea muy conocida , se nos requiere realizar una API REST para el mantenimiento de rutas de vuelos y los precios correspondientes.*
-
-###### La API se debe hacer en dos capas
+###### La API se debe hacer en dos capas.
 
 -----------------------------------------------------------------------------
 
@@ -34,58 +32,59 @@
 
 ```
 “airports” : [ {
-			"iataCode :“MDQ”,
-      “name” : “Aeropuerto Internacional Astor Piazzola”,
-      “city” : {
+
+	"iataCode" :“MDQ”,
+	“name” : “Aeropuerto Internacional Astor Piazzola”,
+	“city” : {
 	       “name”:”Mar del Plata”,
-         “iataCode” : “MDQ”
+	       “iataCode” : “MDQ”
 	    },
-      “country” : {
-          “name”: “Argentina”,
-          “isoCode” :” AR”
-       }
-					“latitude” : -23.5,
-					“longitude”: 14.3
+	“country” : {
+          	“name”: “Argentina”,
+          	“isoCode” :” AR”
+	    },
+       “latitude” : -23.5,
+       “longitude”: 14.3
  }]
 ```
 ```
-“prices” : [{
-	    “origin”  :  {
-			                     “itaCode”: “MDQ”,
-			                     “name” : “Aeropuerto Internacional Astor Piazzola”,
-			                     “city” : {
-	    			                          “name”:”Mar del Plata”,
-                    			            “iataCode” : “MDQ”
-	                          },
-                            “country” : {
-                                          “name”: “Argentina”,
-                                          “isoCode” :” AR”
-                            },
-					                  “latitude” : -23.5,
-					                  “longitude”: 14.3
-                            },
-        "destination"  :    {
-                             “iataCode”:”EZE”,
-                             “name” : “Aeropuerto Internacional Ministro Pistarini”,
-                             “city” : {
-                                        “name”:”Buenos Aires”,
-                                        “iataCode” : ”BUE”,
-                              },
-                              “country” : {
-                                            “name”: “Argentina”,
-                                            “isoCode” :”AR”
-                              },
-                              “latitude” : -23.5,
-                              “longitude”: 14.3
-                              },
-        "cabin" : {
-                "id" : "1",
-                "name" : "Economic"
-        },
-        price : 24.5,
-        vigencyFrom : "01-05-2018",
-        vigencyTo :"05-08-2018"
-    }]
+“prices” : [ {
+
+	    “origin” : {
+	    	“itaCode”: “MDQ”,
+		“name” : “Aeropuerto Internacional Astor Piazzola”,
+		“city” : {
+			“name”:”Mar del Plata”,
+			“iataCode” : “MDQ”
+	                  },
+		“country” : {
+                         “name”: “Argentina”,
+                         “isoCode” :” AR”
+                           },
+		“latitude” : -23.5,
+		longitude”: 14.3
+        	"destination" : {
+                           “iataCode”:”EZE”,
+                           “name” : “Aeropuerto Internacional Ministro Pistarini”,
+                	   “city” : {
+                           	“name”:”Buenos Aires”,
+                                “iataCode” : ”BUE”,
+                              	    },
+                           “country” : {
+                                 “name”: “Argentina”,
+                                 “isoCode” :”AR”
+                              	    },
+                           “latitude” : -23.5,
+                           “longitude”: 14.3
+                                 },
+        	"cabin" : {
+                	"id" : "1",
+                	"name" : "Economic"
+        		},
+        	price : 24.5,
+        	vigencyFrom : "01-05-2018",
+        	vigencyTo :"05-08-2018"
+    	}]
     
 ```
 -----------------------------------------------------------------------------
