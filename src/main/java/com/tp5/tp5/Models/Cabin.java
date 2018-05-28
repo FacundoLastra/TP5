@@ -23,4 +23,9 @@ public class Cabin {
     @OneToMany(mappedBy="price", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Price> priceList = new ArrayList<>();
 
+
+    public Cabin(String name){
+        this.name=name;
+    }
+
 }
