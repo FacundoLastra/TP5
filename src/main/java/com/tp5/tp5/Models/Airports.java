@@ -1,6 +1,7 @@
 package com.tp5.tp5.Models;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @Table(name = "airports")
+@NoArgsConstructor
 public class Airports {
 
     @Id
