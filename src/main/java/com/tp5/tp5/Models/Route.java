@@ -1,5 +1,6 @@
 package com.tp5.tp5.Models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,11 +24,11 @@ public class Route {
 
     @ManyToOne
     @JoinColumn(name = "airportOrigin_id")
-    private Airport origin;
+    private Airports origin;
 
     @ManyToOne
     @JoinColumn(name = "airportDestination_id")
-    private Airport destination;
+    private Airports destination;
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
@@ -38,5 +39,11 @@ public class Route {
             joinColumns = { @JoinColumn(name = "route_id") },
             inverseJoinColumns = { @JoinColumn(name = "cabin_id") })
     private Set<Cabin> cabin = new HashSet<>();
+
+    public Route (float distance,Airports origin,Airports destination){
+        this.distance=distance;
+        this.origin=origin;
+        this.destination=destination;
+    }
 
 }
