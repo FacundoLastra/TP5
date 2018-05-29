@@ -1,6 +1,7 @@
 package com.tp5.tp5.Models;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -12,7 +13,15 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @Table(name = "city")
+@NoArgsConstructor
 public class City {
+
+    public City (String iata, String name, State state){
+
+        this.iata = iata;
+        this.name = name;
+        this.state = state;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +29,7 @@ public class City {
     private long id;
 
     @Size(max = 3)
-    //@Column(unique = true) Not is Unique
+    @Column(unique = true) //Not is Unique
     private String iata;
 
     private String name;
