@@ -16,13 +16,22 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class Airports {
 
+    public Airports (String iata, String name, City city, float longitud, float latitud) {
+
+        this.iata = iata;
+        this.name = name;
+        this.city = city;
+        this.longitud = longitud;
+        this.latitud = latitud;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private long id;
 
     @Size(max = 3)
-    //@Column(unique = true) Not is Unique
+    @Column(unique = true) //Not is Unique
     private String iata;
 
     private String name;

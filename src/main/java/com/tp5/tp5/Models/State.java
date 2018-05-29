@@ -14,6 +14,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class State {
 
+    public State (Country country, String iataCode, String name) {
+
+        this.iata_code = iataCode;
+        this.name = name;
+        this.nation = country;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
