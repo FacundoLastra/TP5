@@ -13,6 +13,7 @@ public class StateServices {
 
     @Autowired
     private StateRepository stateRepository;
+    @Autowired
     private CountryRepository countryRepository;
 
 
@@ -30,12 +31,12 @@ public class StateServices {
 
     public void modifyState (String iataCode, String name, String codeCountry) {
 
-        State state = this.stateRepository.findByIataCode(iataCode).get();
+        State state = this.stateRepository.findByIata(iataCode).get();
 
         Country country = this.countryRepository.findByCode(codeCountry).get();
 
         state.setName(name);
-        state.setIata_code(iataCode);
+        state.setIata(iataCode);
         state.setNation(country);
 
         this.stateRepository.save(state);

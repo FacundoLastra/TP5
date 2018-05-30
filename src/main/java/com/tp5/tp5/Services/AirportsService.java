@@ -12,11 +12,12 @@ public class AirportsService {
 
     @Autowired
     private AirportsRepository airportsRepository;
+    @Autowired
     private CityRepository cityRepository;
 
     public void saveAirport (String iata, String name, String codeCity, float longitud, float latitud) {
 
-        City city = this.cityRepository.findByCode(codeCity).get();
+        City city = this.cityRepository.findByIata(codeCity).get();
 
         this.airportsRepository.save(new Airports(iata, name, city, longitud, latitud));
     }
@@ -28,7 +29,7 @@ public class AirportsService {
 
     public void modifyAirport (String iata, String name, String codeCity, float longitud, float latitud) {
 
-        City city = this.cityRepository.findByCode(codeCity).get();
+        City city = this.cityRepository.findByIata(codeCity).get();
 
         Airports airports = this.airportsRepository.findByIata(iata).get();
 

@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="state",
-        uniqueConstraints = {@UniqueConstraint(columnNames={"iata_code"})})
+        uniqueConstraints = {@UniqueConstraint(columnNames={"iata"})})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,7 +16,7 @@ public class State {
 
     public State (Country country, String iataCode, String name) {
 
-        this.iata_code = iataCode;
+        this.iata = iataCode;
         this.name = name;
         this.nation = country;
     }
@@ -25,7 +25,7 @@ public class State {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id",updatable = false,nullable = false)
     private long id;
-    String iata_code;
+    String iata;
     String name;
 
     @ManyToOne

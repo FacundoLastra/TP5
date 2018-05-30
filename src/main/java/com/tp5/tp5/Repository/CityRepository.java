@@ -10,8 +10,8 @@ import java.util.Optional;
 @Repository
 public interface CityRepository extends JpaRepository<City, Long> {
 
-    @Override
+
     Optional<City> findById(Long aLong);
 
-    Optional<City> findByCode (@Param("code")String code);
+    Optional<City> findByIata (@Param("iata")String iata);
 }
