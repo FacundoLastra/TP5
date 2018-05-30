@@ -7,6 +7,8 @@ import com.tp5.tp5.Repository.StateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StateServices {
 
@@ -40,5 +42,10 @@ public class StateServices {
         state.setNation(country);
 
         this.stateRepository.save(state);
+    }
+
+    public List getAllStates () {
+
+        return this.stateRepository.findAll();
     }
 }

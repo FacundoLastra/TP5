@@ -7,6 +7,8 @@ import com.tp5.tp5.Repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AirportsService {
 
@@ -40,5 +42,10 @@ public class AirportsService {
         airports.setName(name);
 
         this.airportsRepository.save(airports);
+    }
+
+    public List getAllAirports () {
+
+        return this.airportsRepository.findAll();
     }
 }
