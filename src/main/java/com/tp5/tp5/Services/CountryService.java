@@ -29,9 +29,9 @@ public class CountryService {
         this.countryRepository.deleteById(id);
     }
 
-    public void modifyCountry (String code, String name) {
+    public void modifyCountry (String code, String name ,long id) {
 
-        Country country = this.countryRepository.findByCode(code).get();
+        Country country = this.countryRepository.findById(id).get();
 
         country.setName(name);
         country.setCode(code);
