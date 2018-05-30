@@ -8,7 +8,7 @@ import org.joda.time.DateTime;
 import javax.persistence.*;
 
 @Entity
-@Table(name="cabin")
+@Table(name="price")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,4 +23,17 @@ public class Price {
     private DateTime desde;
 
     private DateTime hasta;
+
+    @ManyToOne
+    @JoinColumn(name = "cabin_id")
+    Cabin cabin;
+
+    public Price(Float price, DateTime desde, DateTime hasta, Cabin cabin){
+        this.price = price;
+        this.desde = desde;
+        this.hasta= hasta;
+        this.cabin = cabin;
+    }
+
+
 }

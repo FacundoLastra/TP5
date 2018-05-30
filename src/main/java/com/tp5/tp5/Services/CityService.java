@@ -12,11 +12,12 @@ public class CityService {
 
     @Autowired
     private CityRepository cityRepository;
+    @Autowired
     private StateRepository stateRepository;
 
     public void saveCity (String iata, String name, String codeState) {
 
-        State state = this.stateRepository.findByIataCode(codeState).get();
+        State state = this.stateRepository.findByIata(codeState).get();
 
         this.cityRepository.save(new City(iata, name, state));
     }
@@ -28,9 +29,9 @@ public class CityService {
 
     public void modifyCity (String iata, String name, String codeState) {
 
-        City city = this.cityRepository.findByCode(iata).get();
+        City city = this.cityRepository.findByIata(iata).get();
 
-        State state = this.stateRepository.findByIataCode(codeState).get();
+        State state = this.stateRepository.findByIata(codeState).get();
 
         city.setIata(iata);
         city.setName(name);

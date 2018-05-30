@@ -9,12 +9,16 @@ import com.tp5.tp5.Repository.RouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RouteService {
 
     @Autowired
     private RouteRepository routeRepository;
+    @Autowired
     private AirportsRepository airportsRepository;
+    @Autowired
     private CabinRepository cabinRepository;
 
     public boolean saveRoute(String aitaAirportOrigin, String aitaAirportDestination,float distance){
@@ -45,10 +49,21 @@ public class RouteService {
             }
             this.routeRepository.save(route);
         }
-
-
-
     }
+
+    public void updateRoute(long idRoute,String aitaAirportOrigin, String aitaAirportDestination,float distance){
+
+        Route route = this.routeRepository.findById(idRoute).get();
+        route.setOrigin(this.airportsRepository.findByIata(aitaAirportOrigin).get());
+        route.setDestination(this.airportsRepository.findByIata(aitaAirportDestination).get());
+        route.setDistance(distance);
+        this.routeRepository.save(route);
+    }
+
+    public List getAllRoutes(){
+        return this.routeRepository.findAll();
+    }
+
 
 
 
