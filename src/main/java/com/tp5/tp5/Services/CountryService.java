@@ -16,6 +16,7 @@ public class CountryService {
     private CountryRepository countryRepository;
 
     public CountryService(CountryRepository countryRepository){
+
         this.countryRepository = countryRepository;
     }
 
@@ -39,6 +40,7 @@ public class CountryService {
         this.countryRepository.save(country);
     }
     public List getAllCountrys(){
+
         return this.countryRepository.findAll();
     }
 }

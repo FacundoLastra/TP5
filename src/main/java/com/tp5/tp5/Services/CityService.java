@@ -7,6 +7,8 @@ import com.tp5.tp5.Repository.StateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CityService {
 
@@ -38,5 +40,10 @@ public class CityService {
         city.setState(state);
 
         this.cityRepository.save(city);
+    }
+
+    public List getAllCitys () {
+
+        return cityRepository.findAll();
     }
 }

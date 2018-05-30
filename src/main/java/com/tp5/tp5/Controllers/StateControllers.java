@@ -1,12 +1,13 @@
 package com.tp5.tp5.Controllers;
 
 import com.tp5.tp5.Services.StateServices;
-import lombok.NoArgsConstructor;
+import com.tp5.tp5.payload.request.StateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@NoArgsConstructor
 @RequestMapping("/state")
 public class StateControllers {
 
@@ -14,22 +15,40 @@ public class StateControllers {
     private StateServices stateServices;
 
 
-    @DeleteMapping("/")
+    @DeleteMapping("{id}")
     public void deleteState (@PathVariable Long id) {
 
         this.stateServices.deleteState(id);
     }
 
-    @PutMapping("/")
-    public void addState (@PathVariable String iataCode, @PathVariable String name, @PathVariable String codeCountry ) {
+    @PutMapping
+    public void addState (@RequestBody StateRequest stateRequest) {
 
-        this.stateServices.saveState(iataCode, name, codeCountry);
+        try{
+
+            this.stateServices.saveState(stateRequest.getIata_code(), stateRequest.getName(), stateRequest.getCountryCode());
+
+        }catch (Exception e) {
+
+        }
     }
 
-    @PatchMapping("/")
-    public void modifyState (@PathVariable String iataCode, @PathVariable String name, @PathVariable String codeCountry) {
+    @PostMapping("/")
+    public void modifyState (@RequestBody StateRequest stateRequest) {
 
-        this.stateServices.modifyState(iataCode, name, codeCountry);
+        try {
+
+            this.stateServices.modifyState(stateRequest.getIata_code(), stateRequest.getName(), stateRequest.getCountryCode());
+
+        }catch (Exception e) {
+
+        }
+    }
+
+    @GetMapping
+    public List getAll () {
+
+        return this.stateServices.getAllStates();
     }
 
 }

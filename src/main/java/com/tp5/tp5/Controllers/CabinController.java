@@ -26,6 +26,8 @@ public class CabinController {
         }
     }
 
+
+
     @DeleteMapping("/")
     public void deleteCabin(@PathVariable long id){
         this.cabinService.deleteCabin(id);

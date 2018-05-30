@@ -14,6 +14,6 @@ public class StateRequest {
     @NotNull
     String name;
     @NotNull
-    String cityCode;
+    String countryCode;
 
 }
