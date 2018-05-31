@@ -1,5 +1,7 @@
 package com.tp5.tp5.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,6 +30,8 @@ public class Country {
     private long id;
     String name;
     String code;
-    @OneToMany(mappedBy="nation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<State> stateList = new ArrayList<>();
+    @OneToMany(mappedBy="nation",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("nation")
+    private List<State> stateList;
+
 }

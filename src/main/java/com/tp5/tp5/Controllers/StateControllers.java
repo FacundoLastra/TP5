@@ -22,7 +22,7 @@ public class StateControllers {
     }
 
     @PutMapping
-    public void addState (@RequestBody StateRequest stateRequest) {
+    public void addState(@RequestBody StateRequest stateRequest) {
 
         try{
 
@@ -33,7 +33,7 @@ public class StateControllers {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping
     public void modifyState (@RequestBody StateRequest stateRequest) {
 
         try {
@@ -46,7 +46,7 @@ public class StateControllers {
     }
 
     @GetMapping
-    public List getAll () {
+    public List getAll() {
 
         return this.stateServices.getAllStates();
     }

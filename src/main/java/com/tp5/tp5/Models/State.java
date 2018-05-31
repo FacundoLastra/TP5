@@ -1,10 +1,12 @@
 package com.tp5.tp5.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="state",
@@ -31,5 +33,9 @@ public class State {
     @ManyToOne
     @JoinColumn(name = "country_id")
     Country nation;
+
+    @OneToMany(mappedBy="stateAtribute",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("stateAtribute")
+    private List<City> cityList;
 
 }

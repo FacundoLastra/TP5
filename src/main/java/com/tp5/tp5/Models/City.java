@@ -20,7 +20,7 @@ public class City {
 
         this.iata = iata;
         this.name = name;
-        this.state = state;
+        this.stateAtribute = state;
     }
 
     @Id
@@ -34,9 +34,8 @@ public class City {
 
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "state_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private State state;
+    private State stateAtribute;
 
 }

@@ -37,7 +37,7 @@ public class CityService {
 
         city.setIata(iata);
         city.setName(name);
-        city.setState(state);
+        city.setStateAtribute(state);
 
         this.cityRepository.save(city);
     }

@@ -36,7 +36,7 @@ public class Airports {
 
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "city_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private City city;

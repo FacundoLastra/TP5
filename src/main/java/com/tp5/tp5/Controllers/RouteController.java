@@ -17,6 +17,7 @@ public class RouteController {
 
     @PutMapping
     public boolean addRoute(@RequestBody RouteRequest routeRequest){
+
         return this.routeService.saveRoute(routeRequest.getIataAirportOrigin(),routeRequest.getIataAirportDestination(),routeRequest.getDistance());
     }
 
