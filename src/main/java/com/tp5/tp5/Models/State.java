@@ -32,7 +32,7 @@ public class State {
 
     @ManyToOne
     @JoinColumn(name = "country_id")
-    Country nation;
+    private Country nation;
 
     @OneToMany(mappedBy="stateAtribute",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("stateAtribute")
