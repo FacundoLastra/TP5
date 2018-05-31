@@ -2,6 +2,7 @@ package com.tp5.tp5.Controllers;
 
 import com.tp5.tp5.Models.Route;
 import com.tp5.tp5.Services.RouteService;
+import com.tp5.tp5.payload.request.RouteRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,22 +15,23 @@ public class RouteController {
     @Autowired
     private RouteService routeService;
 
-    @PutMapping("/")
-    public boolean addRoute(@PathVariable String aitaAirportOrigin,@PathVariable String aitaAirportDestination, @PathVariable float distance){
-        return this.routeService.saveRoute(aitaAirportOrigin,aitaAirportDestination,distance);
+    @PutMapping
+    public boolean addRoute(@RequestBody RouteRequest routeRequest){
+
+        return this.routeService.saveRoute(routeRequest.getIataAirportOrigin(),routeRequest.getIataAirportDestination(),routeRequest.getDistance());
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping("{id}")
     public void deleteRoute(@PathVariable("id") long idRoute){
         this.routeService.deleteRoute(idRoute);
     }
 
-    @PatchMapping("/")
-    public void updateRoute(@PathVariable long idRoute, @PathVariable String aitaAirportOrigin, @PathVariable String aitaAirportDestination, @PathVariable float distance){
-        this.routeService.updateRoute(idRoute,aitaAirportOrigin,aitaAirportDestination,distance);
+    @PostMapping("/update")
+    public void updateRoute(@RequestBody RouteRequest routeRequest){
+        this.routeService.updateRoute(routeRequest.getId(),routeRequest.getIataAirportOrigin(),routeRequest.getIataAirportDestination(),routeRequest.getDistance());
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List getAllRoutes(){
         return this.routeService.getAllRoutes();
     }

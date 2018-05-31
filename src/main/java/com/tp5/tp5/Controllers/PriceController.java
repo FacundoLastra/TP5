@@ -1,6 +1,7 @@
 package com.tp5.tp5.Controllers;
 
 import com.tp5.tp5.Services.PriceService;
+import com.tp5.tp5.payload.request.PriceRequest;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,22 +15,22 @@ public class PriceController {
     @Autowired
     private PriceService priceService;
 
-    @PutMapping("/")
-    public void addPrice(@PathVariable long idCabin,@PathVariable float price,@PathVariable DateTime desde,@PathVariable DateTime hasta){
-        this.priceService.savePrice(idCabin, price, desde, hasta);
+    @PutMapping
+    public void addPrice(@RequestBody PriceRequest priceRequest){
+        this.priceService.savePrice(priceRequest.getIdCabin(),priceRequest.getPrice(), priceRequest.getDesde(), priceRequest.getHasta());
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping("{id}")
     public void deletePrice(@PathVariable long idPrice){
         this.priceService.deletePrice(idPrice);
     }
 
-    @PatchMapping("/")
-    public void updatePrice(@PathVariable long priceId,@PathVariable float price,@PathVariable DateTime desde,@PathVariable DateTime hasta){
-        this.priceService.updatePrice(priceId, price, desde, hasta);
+    @PostMapping
+    public void updatePrice(@RequestBody PriceRequest priceRequest){
+        this.priceService.updatePrice(priceRequest.getId(),priceRequest.getPrice(), priceRequest.getDesde(), priceRequest.getHasta());
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List getAllPrices(){
         return this.priceService.getAllPrices();
     }

@@ -1,11 +1,11 @@
 package com.tp5.tp5.Controllers;
-
 import com.tp5.tp5.Services.CountryService;
 import com.tp5.tp5.payload.request.CountryRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 
 @RestController
@@ -29,7 +29,6 @@ public class CountryControllers {
             this.countryService.saveCountry(countryRequest.getName(), countryRequest.getCode());
         }catch (Exception e)
         {
-
         }
 
     }

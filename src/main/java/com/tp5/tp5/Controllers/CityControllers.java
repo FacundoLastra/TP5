@@ -48,7 +48,7 @@ public class CityControllers {
     }
 
     @GetMapping
-    public List getAll () {
+    public List getAll(){
 
         return this.cityService.getAllCitys();
     }

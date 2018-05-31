@@ -3,6 +3,7 @@ package com.tp5.tp5.Controllers;
 import com.tp5.tp5.Models.Cabin;
 import com.tp5.tp5.Services.CabinService;
 import com.tp5.tp5.Services.RouteService;
+import com.tp5.tp5.payload.request.CabinRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,29 +18,27 @@ public class CabinController {
     @Autowired
     private RouteService routeService;
 
-    @PutMapping("/")
-    public void addCabin(@PathVariable long routeId , @PathVariable String name){
-        Cabin addedCabin = this.cabinService.saveCabin(name);
+    @PutMapping
+    public void addCabin(@RequestBody CabinRequest cabinRequest){
+        Cabin addedCabin = this.cabinService.saveCabin(cabinRequest.getName());
 
         if (addedCabin != null){
-            this.routeService.addCabin(routeId,addedCabin.getId());
+            this.routeService.addCabin(cabinRequest.getRouteId(),addedCabin.getId());
         }
     }
 
-
-
-    @DeleteMapping("/")
+    @DeleteMapping("{id}")
     public void deleteCabin(@PathVariable long id){
         this.cabinService.deleteCabin(id);
 
     }
 
-    @PatchMapping("/")
-    public void updateCabin(@PathVariable long id,@PathVariable String name){
-        this.cabinService.modifyCabin(id,name);
+    @PostMapping("/update")
+    public void updateCabin(@RequestBody CabinRequest cabinRequest){
+        this.cabinService.modifyCabin(cabinRequest.getId(),cabinRequest.getName());
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List getAllCabins(){
         return this.cabinService.getAllCabins();
     }
