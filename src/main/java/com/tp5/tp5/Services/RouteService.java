@@ -2,6 +2,7 @@ package com.tp5.tp5.Services;
 
 import com.tp5.tp5.Models.Airports;
 import com.tp5.tp5.Models.Cabin;
+import com.tp5.tp5.Models.Cabin_Route;
 import com.tp5.tp5.Models.Route;
 import com.tp5.tp5.Repository.AirportsRepository;
 import com.tp5.tp5.Repository.CabinRepository;
@@ -44,9 +45,10 @@ public class RouteService {
         Cabin cabin = this.cabinRepository.findById(idCabin).get();
 
         if (route != null && cabin != null){
-            if(!route.getCabin().contains(cabin)){
-                route.getCabin().add(cabin);
-            }
+            Cabin_Route cabin_route= new Cabin_Route(cabin,route);
+
+            route.getCabinRouteSet().add(cabin_route);
+
             this.routeRepository.save(route);
         }
     }
@@ -62,6 +64,10 @@ public class RouteService {
 
     public List getAllRoutes(){
         return this.routeRepository.findAll();
+    }
+
+    public Route getById(long id){
+        return this.routeRepository.findById(id).get();
     }
 
 

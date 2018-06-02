@@ -25,14 +25,16 @@ public class Price {
     private DateTime hasta;
 
     @ManyToOne
-    @JoinColumn(name = "cabin_id")
-    Cabin cabin;
+    @JoinColumns({
+            @JoinColumn(name = "cabin_route_id")
+    })
+    Cabin_Route cabin_Route;
 
-    public Price(Float price, DateTime desde, DateTime hasta, Cabin cabin){
+    public Price(Float price, DateTime desde, DateTime hasta, Cabin_Route cabin_Route ){
         this.price = price;
         this.desde = desde;
         this.hasta= hasta;
-        this.cabin = cabin;
+        this.cabin_Route = cabin_Route;
     }
 
 

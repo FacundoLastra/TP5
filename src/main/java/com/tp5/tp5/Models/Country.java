@@ -30,6 +30,7 @@ public class Country {
     private long id;
     String name;
     String code;
+
     @OneToMany(mappedBy="nation",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("nation")
     private List<State> stateList;

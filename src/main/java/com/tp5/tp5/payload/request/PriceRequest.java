@@ -13,6 +13,8 @@ public class PriceRequest {
     @NotNull
     int idCabin;
     @NotNull
+    int idRoute;
+    @NotNull
     float price;
     @NotNull
     DateTime desde;

@@ -17,7 +17,7 @@ public class PriceController {
 
     @PutMapping
     public void addPrice(@RequestBody PriceRequest priceRequest){
-        this.priceService.savePrice(priceRequest.getIdCabin(),priceRequest.getPrice(), priceRequest.getDesde(), priceRequest.getHasta());
+        this.priceService.savePrice(priceRequest.getIdCabin(),priceRequest.getIdRoute(),priceRequest.getPrice(), priceRequest.getDesde(), priceRequest.getHasta());
     }
 
     @DeleteMapping("{id}")
