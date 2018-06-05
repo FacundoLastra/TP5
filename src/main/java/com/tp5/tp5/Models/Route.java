@@ -29,7 +29,7 @@ public class Route {
     @JoinColumn(name = "airportDestination_id")
     private Airports destination;
 
-    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
     private Set<Cabin_Route> cabinRouteSet = new HashSet<>();
 
     public Route (float distance,Airports origin,Airports destination){

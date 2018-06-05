@@ -22,7 +22,7 @@ public class Cabin {
 
 
 
-    @OneToMany(mappedBy = "cabin", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "cabin", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
     private Set<Cabin_Route> cabinRouteSet = new HashSet<>();
 
     public Cabin(String name){

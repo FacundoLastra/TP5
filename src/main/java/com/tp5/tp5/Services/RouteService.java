@@ -7,9 +7,11 @@ import com.tp5.tp5.Models.Route;
 import com.tp5.tp5.Repository.AirportsRepository;
 import com.tp5.tp5.Repository.CabinRepository;
 import com.tp5.tp5.Repository.RouteRepository;
+import com.tp5.tp5.payload.response.RouteResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -63,7 +65,10 @@ public class RouteService {
     }
 
     public List getAllRoutes(){
-        return this.routeRepository.findAll();
+
+        List<RouteResponse> response = new ArrayList<>();
+        this.routeRepository.findAll().forEach(c->response.add(new RouteResponse(c)));
+        return response;
     }
 
     public Route getById(long id){

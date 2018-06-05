@@ -4,9 +4,11 @@ import com.tp5.tp5.Models.Airports;
 import com.tp5.tp5.Models.City;
 import com.tp5.tp5.Repository.AirportsRepository;
 import com.tp5.tp5.Repository.CityRepository;
+import com.tp5.tp5.payload.response.AirportResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -46,6 +48,8 @@ public class AirportsService {
 
     public List getAllAirports () {
 
-        return this.airportsRepository.findAll();
+        List<AirportResponse> response = new ArrayList<>();
+        this.airportsRepository.findAll().forEach(c->response.add(new AirportResponse(c)));
+        return response;
     }
 }

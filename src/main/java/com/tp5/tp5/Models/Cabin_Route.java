@@ -28,8 +28,10 @@ public class Cabin_Route {
     @JoinColumn(name = "route_id")
     private  Route route;
 
+
     @OneToMany(mappedBy="cabin_Route")
     private Set<Price> priceList = new HashSet<>();
+
 
     public Cabin_Route(Cabin cabin, Route route){
         this.cabin=cabin;
