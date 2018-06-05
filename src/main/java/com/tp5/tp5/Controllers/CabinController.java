@@ -20,6 +20,7 @@ public class CabinController {
 
     @PutMapping
     public void addCabin(@RequestBody CabinRequest cabinRequest){
+
         Cabin addedCabin = this.cabinService.saveCabin(cabinRequest.getName());
 
         if (addedCabin != null){

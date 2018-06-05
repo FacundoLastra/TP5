@@ -4,9 +4,11 @@ import com.tp5.tp5.Models.City;
 import com.tp5.tp5.Models.State;
 import com.tp5.tp5.Repository.CityRepository;
 import com.tp5.tp5.Repository.StateRepository;
+import com.tp5.tp5.payload.response.CityResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -43,7 +45,8 @@ public class CityService {
     }
 
     public List getAllCitys () {
-
-        return cityRepository.findAll();
+        List<CityResponse> response = new ArrayList<>();
+        this.cityRepository.findAll().forEach(c->response.add(new CityResponse(c)));
+        return response;
     }
 }

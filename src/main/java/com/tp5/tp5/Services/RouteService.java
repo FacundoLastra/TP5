@@ -2,13 +2,16 @@ package com.tp5.tp5.Services;
 
 import com.tp5.tp5.Models.Airports;
 import com.tp5.tp5.Models.Cabin;
+import com.tp5.tp5.Models.Cabin_Route;
 import com.tp5.tp5.Models.Route;
 import com.tp5.tp5.Repository.AirportsRepository;
 import com.tp5.tp5.Repository.CabinRepository;
 import com.tp5.tp5.Repository.RouteRepository;
+import com.tp5.tp5.payload.response.RouteResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -44,9 +47,10 @@ public class RouteService {
         Cabin cabin = this.cabinRepository.findById(idCabin).get();
 
         if (route != null && cabin != null){
-            if(!route.getCabin().contains(cabin)){
-                route.getCabin().add(cabin);
-            }
+            Cabin_Route cabin_route= new Cabin_Route(cabin,route);
+
+            route.getCabinRouteSet().add(cabin_route);
+
             this.routeRepository.save(route);
         }
     }
@@ -61,7 +65,14 @@ public class RouteService {
     }
 
     public List getAllRoutes(){
-        return this.routeRepository.findAll();
+
+        List<RouteResponse> response = new ArrayList<>();
+        this.routeRepository.findAll().forEach(c->response.add(new RouteResponse(c)));
+        return response;
+    }
+
+    public Route getById(long id){
+        return this.routeRepository.findById(id).get();
     }
 
 

@@ -2,10 +2,12 @@ package com.tp5.tp5.Services;
 
 import com.tp5.tp5.Models.Country;
 import com.tp5.tp5.Repository.CountryRepository;
+import com.tp5.tp5.payload.response.CountryResponse;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -41,6 +43,9 @@ public class CountryService {
     }
     public List getAllCountrys(){
 
-        return this.countryRepository.findAll();
+         List<Country> countrys = this.countryRepository.findAll();
+         List<CountryResponse> response = new ArrayList<>();
+         countrys.forEach(c->response.add(new CountryResponse(c)));
+         return response;
     }
 }
