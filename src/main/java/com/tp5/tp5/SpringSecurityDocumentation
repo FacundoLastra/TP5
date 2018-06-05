@@ -1,0 +1,8 @@
+
+    /* This is a file of specification steps to implements SpringSecurity. */
+
+    - Models/User
+
+    - Repository/UserRepository
+
+    - Services/UserCrudService

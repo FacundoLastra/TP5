@@ -9,7 +9,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
-@Entity
+
 @Getter
 @Setter
 @Table(name = "airports")
