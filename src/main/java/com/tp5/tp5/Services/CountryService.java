@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.PersistenceException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,22 +18,22 @@ public class CountryService {
     @Autowired
     private CountryRepository countryRepository;
 
-    public CountryService(CountryRepository countryRepository){
+    public CountryService(CountryRepository countryRepository) {
 
         this.countryRepository = countryRepository;
     }
 
-    public void saveCountry (String name, String code) {
-
-        this.countryRepository.save(new Country(name, code));
+    public boolean saveCountry (Country country) throws PersistenceException  {
+        Country ret = this.countryRepository.save(country);
+        return ret!=null?true:false;
     }
 
-    public void deleteCountry (Long id) {
+    public void deleteCountry (Long id) throws PersistenceException {
 
         this.countryRepository.deleteById(id);
     }
 
-    public void modifyCountry (String code, String name ,long id) {
+    public void modifyCountry (String code, String name ,long id) throws PersistenceException{
 
         Country country = this.countryRepository.findById(id).get();
 
@@ -41,11 +42,9 @@ public class CountryService {
 
         this.countryRepository.save(country);
     }
-    public List getAllCountrys(){
-
-         List<Country> countrys = this.countryRepository.findAll();
+    public List getAllCountrys() throws PersistenceException {
          List<CountryResponse> response = new ArrayList<>();
-         countrys.forEach(c->response.add(new CountryResponse(c)));
+         this.countryRepository.findAll().forEach(c->response.add(new CountryResponse(c)));
          return response;
     }
 }

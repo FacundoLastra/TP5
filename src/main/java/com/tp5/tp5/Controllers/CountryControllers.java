@@ -1,9 +1,14 @@
 package com.tp5.tp5.Controllers;
+import com.tp5.tp5.Models.Country;
 import com.tp5.tp5.Services.CountryService;
 import com.tp5.tp5.payload.request.CountryRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.PersistenceException;
 import java.util.List;
 
 
@@ -17,20 +22,27 @@ public class CountryControllers {
 
 
     @DeleteMapping("{id}")
-    public void deleteCountry (@PathVariable Long id) {
+    public ResponseEntity deleteCountry (@PathVariable Long id) {
+        ResponseEntity response;
+        try {
+            this.countryService.deleteCountry(id);
+            response = new ResponseEntity(HttpStatus.OK);
 
-        this.countryService.deleteCountry(id);
+        }catch (PersistenceException pe){
+            response = new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        return response;
     }
 
     //@RequestMapping(method = RequestMethod.POST, produces = "application/json")
     @PutMapping
-    public void addCountry (@RequestBody CountryRequest countryRequest){
+    public ResponseEntity addCountry (@RequestBody CountryRequest countryRequest){
         try {
-            this.countryService.saveCountry(countryRequest.getName(), countryRequest.getCode());
-        }catch (Exception e)
-        {
+            this.countryService.saveCountry(new Country(countryRequest.getName(),countryRequest.getCode()));
+        }catch (PersistenceException  pe) {
+            new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
+        return new ResponseEntity(HttpStatus.CREATED);
     }
     @PostMapping("/update")
     public void modifyCountry (@RequestBody CountryRequest countryRequest) {
@@ -39,7 +51,6 @@ public class CountryControllers {
     }
     @GetMapping
     public List getAll(){
-
         return this.countryService.getAllCountrys();
     }
 }
