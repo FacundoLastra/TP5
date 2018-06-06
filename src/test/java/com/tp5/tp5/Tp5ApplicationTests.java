@@ -11,7 +11,7 @@ public class Tp5ApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		//Tp5Application.main(new String[]{});
+		Tp5Application.main(new String[]{});
 
 	}
 
