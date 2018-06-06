@@ -2,14 +2,20 @@ package com.tp5.tp5.Controllers;
 
 import com.tp5.tp5.Services.StateServices;
 import com.tp5.tp5.payload.request.StateRequest;
+import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static lombok.AccessLevel.PACKAGE;
+import static lombok.AccessLevel.PRIVATE;
+
 @RestController
 @RequestMapping("/state")
+@FieldDefaults(level = PRIVATE, makeFinal = true)
+@AllArgsConstructor(access = PACKAGE)
 public class StateControllers {
 
     @Autowired

@@ -1,6 +1,6 @@
 package com.tp5.tp5.Security;
 
-import com.tp5.tp5.Services.UserAuthenticationService;
+import com.tp5.tp5.Security.Services.UserAuthenticationService;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.experimental.FieldDefaults;

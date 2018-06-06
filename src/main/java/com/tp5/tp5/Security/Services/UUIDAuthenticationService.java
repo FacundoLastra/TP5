@@ -1,9 +1,8 @@
-package com.tp5.tp5.Services;
+package com.tp5.tp5.Security.Services;
 
-
-import com.tp5.tp5.Services.UserAuthenticationService;
-import com.tp5.tp5.Services.UserCrudService;
-import com.tp5.tp5.Models.User;
+import com.tp5.tp5.Security.Services.UserAuthenticationService;
+import com.tp5.tp5.Security.Services.UserCrudService;
+import com.tp5.tp5.Security.Models.User;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.experimental.FieldDefaults;
@@ -28,11 +27,11 @@ final class UUIDAuthenticationService implements UserAuthenticationService {
         final User user = User
                 .builder()
                 .id(uuid)
-                .username(username) /**Temp Info : Llama al constructor de usuarios y crea al usuario con los datos.*/
+                .username(username)
                 .password(password)
                 .build();
 
-        users.saveUser(user);
+        users.save(user);
         return Optional.of(uuid);
     }
 
@@ -44,6 +43,5 @@ final class UUIDAuthenticationService implements UserAuthenticationService {
     @Override
     public void logout(final User user) {
 
-        /**Temp Info : Supongo que le retirara el Token y nada mas, cosa de no poder acceder a los metodos no publicos.*/
     }
 }

@@ -4,13 +4,20 @@ import com.tp5.tp5.Models.Cabin;
 import com.tp5.tp5.Services.CabinService;
 import com.tp5.tp5.Services.RouteService;
 import com.tp5.tp5.payload.request.CabinRequest;
+import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static lombok.AccessLevel.PACKAGE;
+import static lombok.AccessLevel.PRIVATE;
+
 @RestController
 @RequestMapping("/cabin")
+@FieldDefaults(level = PRIVATE, makeFinal = true)
+@AllArgsConstructor(access = PACKAGE)
 public class CabinController {
 
     @Autowired

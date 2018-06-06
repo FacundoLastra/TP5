@@ -1,6 +1,7 @@
-package com.tp5.tp5.Services;
+package com.tp5.tp5.Security.Services;
 
-import com.tp5.tp5.Models.User;
+import com.tp5.tp5.Security.Models.User;
+
 import java.util.Optional;
 
 public interface UserAuthenticationService {

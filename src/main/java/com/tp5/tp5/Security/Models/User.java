@@ -1,4 +1,4 @@
-package com.tp5.tp5.Models;
+package com.tp5.tp5.Security.Models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -13,17 +13,9 @@ import java.util.Collection;
 
 import static java.util.Objects.requireNonNull;
 
-/***
- * This model Class, is a first test in Spring Security.
- *
- * To match Spring Security API, the User class implements
- * UserDetails. This way, our custom User bean seamlessly integrates into Spring Security.
- */
-
 @Value
 @Builder
 public class User implements UserDetails {
-
     private static final long serialVersionUID = 2396654715019746670L;
 
     String id;
@@ -49,8 +41,7 @@ public class User implements UserDetails {
     @JsonIgnore
     @Override
     public String getPassword() {
-
-        return this.password;
+        return password;
     }
 
     @JsonIgnore

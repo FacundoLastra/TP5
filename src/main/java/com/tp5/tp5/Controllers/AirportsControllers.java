@@ -2,15 +2,20 @@ package com.tp5.tp5.Controllers;
 
 import com.tp5.tp5.Services.AirportsService;
 import com.tp5.tp5.payload.request.AirportRequest;
-import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static lombok.AccessLevel.PACKAGE;
+import static lombok.AccessLevel.PRIVATE;
+
 @RestController
-@NoArgsConstructor
 @RequestMapping("/airports")
+@FieldDefaults(level = PRIVATE, makeFinal = true)
+@AllArgsConstructor(access = PACKAGE)
 public class AirportsControllers {
 
     @Autowired
