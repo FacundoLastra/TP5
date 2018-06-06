@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.PersistenceException;
 import java.util.List;
 
-
-
 @RestController
 @RequestMapping("/country")
 public class CountryControllers {

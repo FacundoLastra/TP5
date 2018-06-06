@@ -11,10 +11,3 @@ script: mvn clean test
 cache:
   directories:
   - $HOME/.m2
-
-notifications:
-  email:
-    recipients:
-      - leo114000@gmail.com
-    on_success: change # default: change
-    on_failure: always # default: always

@@ -6,7 +6,9 @@ import com.tp5.tp5.Repository.CountryRepository;
 import com.tp5.tp5.Repository.StateRepository;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 
@@ -14,6 +16,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
+
 public class TestStateService {
 
     private StateServices stateServices;

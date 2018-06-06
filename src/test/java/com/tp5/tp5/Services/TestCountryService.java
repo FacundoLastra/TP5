@@ -4,7 +4,9 @@ import com.tp5.tp5.Models.Country;
 import com.tp5.tp5.Repository.CountryRepository;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 
@@ -14,6 +16,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
+
 public class TestCountryService {
 
 
