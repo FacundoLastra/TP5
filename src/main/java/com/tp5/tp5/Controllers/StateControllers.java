@@ -5,8 +5,10 @@ import com.tp5.tp5.payload.request.StateRequest;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 import static lombok.AccessLevel.PACKAGE;
@@ -29,15 +31,21 @@ public class StateControllers {
     }
 
     @PutMapping
-    public void addState(@RequestBody StateRequest stateRequest) {
+    public  int saveState(@RequestBody StateRequest stateRequest) {
+
+        int res = HttpServletResponse.SC_BAD_REQUEST;
 
         try{
 
-            this.stateServices.saveState(stateRequest.getIata_code(), stateRequest.getName(), stateRequest.getCountryCode());
+            if (this.stateServices.saveState(stateRequest.getIata_code(), stateRequest.getName(), stateRequest.getCountryCode())!=null){
+                res = HttpServletResponse.SC_ACCEPTED;
+            }
 
         }catch (Exception e) {
 
         }
+
+        return res;
     }
 
     @PostMapping

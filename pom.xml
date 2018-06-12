@@ -58,6 +58,7 @@
 			<scope>provided</scope>
 		</dependency>
 
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>	<!-- New dependency in Test <SIM> -->

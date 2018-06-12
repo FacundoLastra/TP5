@@ -23,11 +23,18 @@ public class StateServices {
     private CountryRepository countryRepository;
 
 
-    public void saveState (String iataCode, String name, String codeCountry) {
+    public State saveState (String iataCode, String name, String codeCountry) {
+
+        State state = null;
 
         Country country = this.countryRepository.findByCode(codeCountry).get();
 
-        this.stateRepository.save(new State(country, iataCode, name));
+        if (country!=null){
+
+            state = this.stateRepository.save(new State(country, iataCode, name));
+        }
+
+        return state;
     }
 
     public void deleteState (Long id) {
