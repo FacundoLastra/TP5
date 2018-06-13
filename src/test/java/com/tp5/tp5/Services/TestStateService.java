@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
@@ -23,12 +24,14 @@ public class TestStateService {
     private State state;
     private Country country;
     private StateRepository mockStateRepository;
+    private CountryRepository mockCountryRepository;
+
     @Before
     public void config(){
         this.country = new Country("Argentina","ARG");
         this.state = new State(country,"BSA","Buenos Aires");
 
-        CountryRepository mockCountryRepository = mock(CountryRepository.class);
+        this.mockCountryRepository = mock(CountryRepository.class);
         when(mockCountryRepository.findByCode("ARG")).thenReturn(java.util.Optional.ofNullable(this.country));
 
         this.mockStateRepository = mock(StateRepository.class);
@@ -40,16 +43,20 @@ public class TestStateService {
     }
     @Test
     public void saveTest(){
-        this.stateServices.saveState("BSA","Buenos Aires","ARG");
-        verify(this.mockStateRepository,times(1)).save(this.state);
+        boolean res=this.stateServices.saveState("BSA","Buenos Aires","ARG");
+        verify(this.mockCountryRepository,times(1)).findByCode("ARG");
+        assertTrue(res);
     }
     @Test
     public void deleteTest(){
         this.stateServices.deleteState((long)1);
+        verify(this.mockStateRepository,times(1)).deleteById((long)1);
     }
     @Test
     public void modifyStateTest(){
         this.stateServices.modifyState("BSA","Buenos Aires","ARG");
+        verify(this.mockStateRepository,times(1)).findByIata("BSA");
+
     }
     @Test
     public void getAllStateTest(){

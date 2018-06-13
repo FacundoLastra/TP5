@@ -5,13 +5,14 @@ import com.tp5.tp5.Models.State;
 import com.tp5.tp5.Repository.CityRepository;
 import com.tp5.tp5.Repository.StateRepository;
 import com.tp5.tp5.payload.response.CityResponse;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Service @AllArgsConstructor
 public class CityService {
 
     @Autowired
@@ -19,11 +20,14 @@ public class CityService {
     @Autowired
     private StateRepository stateRepository;
 
-    public void saveCity (String iata, String name, String codeState) {
+
+    public boolean saveCity (String iata, String name, String codeState) {
 
         State state = this.stateRepository.findByIata(codeState).get();
 
-        this.cityRepository.save(new City(iata, name, state));
+       City city = this.cityRepository.save(new City(iata, name, state));
+
+        return city!=null?true:false;
     }
 
     public void deleteCity (Long id) {

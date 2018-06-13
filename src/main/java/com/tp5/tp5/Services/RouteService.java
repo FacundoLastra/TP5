@@ -7,6 +7,7 @@ import com.tp5.tp5.Models.Route;
 import com.tp5.tp5.Repository.AirportsRepository;
 import com.tp5.tp5.Repository.CabinRepository;
 import com.tp5.tp5.Repository.RouteRepository;
+import com.tp5.tp5.payload.response.AirportResponse;
 import com.tp5.tp5.payload.response.RouteResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,6 +70,36 @@ public class RouteService {
         List<RouteResponse> response = new ArrayList<>();
         this.routeRepository.findAll().forEach(c->response.add(new RouteResponse(c)));
         return response;
+    }
+    public List getAirportsWhitOriginRoutes(){
+        List<Route> routes = this.routeRepository.findAll();
+        List<Airports> airportWhitOrigin = new ArrayList<>();
+        for (Route route: routes) {
+            if (!airportWhitOrigin.contains(route.getOrigin())){
+                airportWhitOrigin.add(route.getOrigin());
+            }
+        }
+        List<AirportResponse> res = new ArrayList<>();
+        airportWhitOrigin.forEach(c->res.add(new AirportResponse(c)));
+        return res;
+    }
+    public List getDestinationAirportsForOrigin(String airportIataOrigin){
+        Airports originAirport = this.airportsRepository.findByIata(airportIataOrigin).get();
+        List<AirportResponse> airportsResponse;
+        if(originAirport!=null){
+            List<Route> routes = this.routeRepository.findAll();
+            List<Airports> airports = new ArrayList<>();
+            for (Route route:routes) {
+                if (route.getOrigin().equals(originAirport)){
+                    airports.add(route.getDestination());
+                }
+            }
+            airportsResponse = new ArrayList<>();
+            airports.forEach(c->airportsResponse.add(new AirportResponse(c)));
+        }else{
+            airportsResponse = null;
+        }
+        return airportsResponse;
     }
 
     public Route getById(long id){

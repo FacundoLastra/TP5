@@ -1,5 +1,6 @@
 package com.tp5.tp5.Models;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,19 +11,14 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "city")
-@NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @EqualsAndHashCode
 public class City {
-
     public City (String iata, String name, State state){
-
         this.iata = iata;
         this.name = name;
         this.stateAtribute = state;
     }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)

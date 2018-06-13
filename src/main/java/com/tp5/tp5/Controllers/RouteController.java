@@ -35,6 +35,15 @@ public class RouteController {
     public List getAllRoutes(){
         return this.routeService.getAllRoutes();
     }
+    @GetMapping("/airportswhitorigin")
+    public List getAirportsWhitOrigin()
+    {
+        return this.routeService.getAirportsWhitOriginRoutes();
+    }
+    @GetMapping("/getdestinationairports/{iata}")
+    public List getAiportDestination(@PathVariable String iata){
+        return this.routeService.getDestinationAirportsForOrigin(iata);
+    }
 
 
 

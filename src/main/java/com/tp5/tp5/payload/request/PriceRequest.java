@@ -9,8 +9,8 @@ import org.joda.time.format.DateTimeFormatter;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-@Getter
-@Setter
+
+@Getter @Setter
 public class PriceRequest {
 
     @NotNull

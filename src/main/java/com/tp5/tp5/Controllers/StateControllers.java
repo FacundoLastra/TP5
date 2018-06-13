@@ -23,7 +23,6 @@ public class StateControllers {
 
     @PutMapping
     public void addState(@RequestBody StateRequest stateRequest) {
-
         try{
 
             this.stateServices.saveState(stateRequest.getIata_code(), stateRequest.getName(), stateRequest.getCountryCode());

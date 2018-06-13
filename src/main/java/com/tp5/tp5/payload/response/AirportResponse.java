@@ -17,4 +17,5 @@ public class AirportResponse {
         this.latitud = airport.getLatitud();
         this.longitud = airport.getLongitud();
     }
+
 }

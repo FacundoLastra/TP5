@@ -5,13 +5,14 @@ import com.tp5.tp5.Models.City;
 import com.tp5.tp5.Repository.AirportsRepository;
 import com.tp5.tp5.Repository.CityRepository;
 import com.tp5.tp5.payload.response.AirportResponse;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Service @AllArgsConstructor
 public class AirportsService {
 
     @Autowired
@@ -19,11 +20,13 @@ public class AirportsService {
     @Autowired
     private CityRepository cityRepository;
 
-    public void saveAirport (String iata, String name, String codeCity, float longitud, float latitud) {
+    public boolean saveAirport (String iata, String name, String codeCity, float longitud, float latitud) {
 
         City city = this.cityRepository.findByIata(codeCity).get();
 
-        this.airportsRepository.save(new Airports(iata, name, city, longitud, latitud));
+        Airports airport= this.airportsRepository.save(new Airports(iata, name, city, longitud, latitud));
+
+       return airport!=null?true:false;
     }
 
     public void deleteAirport (Long id) {

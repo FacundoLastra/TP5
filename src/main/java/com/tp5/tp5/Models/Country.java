@@ -1,6 +1,7 @@
 package com.tp5.tp5.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,9 +12,7 @@ import java.util.List;
 @Entity
 @Table(name="country",
         uniqueConstraints = {@UniqueConstraint(columnNames={"code"})})
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @EqualsAndHashCode
 public class Country {
 
     public Country(String name, String code){

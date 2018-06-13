@@ -11,8 +11,7 @@ import javax.persistence.PersistenceException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-@NoArgsConstructor
+@Service @NoArgsConstructor
 public class CountryService {
 
     @Autowired

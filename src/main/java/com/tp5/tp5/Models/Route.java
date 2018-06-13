@@ -1,24 +1,24 @@
 package com.tp5.tp5.Models;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name="route")
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @EqualsAndHashCode
 public class Route {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id",updatable = false,nullable = false)
     private long id;
-
+    @NotNull
     private float distance;
 
     @ManyToOne
@@ -37,5 +37,4 @@ public class Route {
         this.origin=origin;
         this.destination=destination;
     }
-
 }

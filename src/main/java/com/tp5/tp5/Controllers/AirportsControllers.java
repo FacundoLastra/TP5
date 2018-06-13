@@ -48,7 +48,7 @@ public class AirportsControllers {
     }
 
     @GetMapping
-    public List getAll () {
+    public List getAll() {
 
         return this.airportsService.getAllAirports();
     }

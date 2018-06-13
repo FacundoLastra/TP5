@@ -1,5 +1,6 @@
 package com.tp5.tp5.Models;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,10 +11,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "airports")
-@NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @EqualsAndHashCode
 public class Airports {
 
     public Airports (String iata, String name, City city, float longitud, float latitud) {

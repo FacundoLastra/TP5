@@ -5,7 +5,6 @@ import com.tp5.tp5.Models.State;
 import com.tp5.tp5.Repository.CountryRepository;
 import com.tp5.tp5.Repository.StateRepository;
 import com.tp5.tp5.payload.response.StateResponse;
-import com.tp5.tp5.utilitys.CreateResponse;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Service
-@NoArgsConstructor
+@Service @NoArgsConstructor
 public class StateServices {
     @Autowired
     private StateRepository stateRepository;
@@ -27,11 +25,13 @@ public class StateServices {
         this.countryRepository = countryRepository;
     }
 
-    public State saveState (String iataCode, String name, String codeCountry) {
-
+    public boolean saveState (String iataCode, String name, String codeCountry) {
+        State state = null;
         Country country = this.countryRepository.findByCode(codeCountry).get();
-
-        return this.stateRepository.save(new State(country, iataCode, name));
+        if (country!=null){
+            state = this.stateRepository.save(new State(country, iataCode, name));
+        }
+        return state!=null?true:false;
     }
 
     public void deleteState (Long id) {
