@@ -9,13 +9,16 @@ import com.tp5.tp5.Repository.CabinRepository;
 import com.tp5.tp5.Repository.RouteRepository;
 import com.tp5.tp5.payload.response.AirportResponse;
 import com.tp5.tp5.payload.response.RouteResponse;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-@Service
+@Service @AllArgsConstructor @NoArgsConstructor
 public class RouteService {
 
     @Autowired
@@ -102,12 +105,10 @@ public class RouteService {
         return airportsResponse;
     }
 
-    public Route getById(long id){
-        return this.routeRepository.findById(id).get();
+    public Optional<Route> getById(long id){
+
+        return this.routeRepository.findById(id);
     }
 
-
-
-
-
 }
+

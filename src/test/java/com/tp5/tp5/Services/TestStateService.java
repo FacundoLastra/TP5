@@ -1,5 +1,6 @@
 package com.tp5.tp5.Services;
 
+
 import com.tp5.tp5.Models.Country;
 import com.tp5.tp5.Models.State;
 import com.tp5.tp5.Repository.CountryRepository;
@@ -16,10 +17,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
 
-public class TestStateService {
-
+    @SpringBootTest
+    public class TestStateService {
     private StateServices stateServices;
     private State state;
     private Country country;
