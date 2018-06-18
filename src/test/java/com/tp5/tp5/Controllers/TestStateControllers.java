@@ -1,8 +1,8 @@
 package com.tp5.tp5.Controllers;
 
-import com.tp5.tp5.Models.State;
+import com.models.Models.State;
+import com.models.payload.request.StateRequest;
 import com.tp5.tp5.Services.StateServices;
-import com.tp5.tp5.payload.request.StateRequest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

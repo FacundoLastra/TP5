@@ -1,7 +1,7 @@
 package com.tp5.tp5.Controllers;
 
+import com.models.payload.request.RouteRequest;
 import com.tp5.tp5.Services.RouteService;
-import com.tp5.tp5.payload.request.RouteRequest;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

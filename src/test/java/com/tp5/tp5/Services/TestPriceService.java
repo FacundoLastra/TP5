@@ -1,6 +1,6 @@
 package com.tp5.tp5.Services;
 
-import com.tp5.tp5.Models.*;
+import com.models.Models.*;
 import com.tp5.tp5.Repository.AirportsRepository;
 import com.tp5.tp5.Repository.CabinRepository;
 import com.tp5.tp5.Repository.RouteRepository;

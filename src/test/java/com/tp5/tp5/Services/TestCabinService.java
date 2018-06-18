@@ -1,6 +1,6 @@
 package com.tp5.tp5.Services;
 
-import com.tp5.tp5.Models.Cabin;
+import com.models.Models.Cabin;
 import com.tp5.tp5.Repository.CabinRepository;
 import org.junit.Assert;
 import org.junit.Before;

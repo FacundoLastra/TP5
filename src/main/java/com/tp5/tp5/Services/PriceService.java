@@ -1,10 +1,10 @@
 package com.tp5.tp5.Services;
 
-import com.tp5.tp5.Models.Cabin_Route;
-import com.tp5.tp5.Models.Price;
-import com.tp5.tp5.Models.Route;
+import com.models.Models.Cabin_Route;
+import com.models.Models.Price;
+import com.models.Models.Route;
+import com.models.payload.response.PriceResponse;
 import com.tp5.tp5.Repository.PriceRepository;
-import com.tp5.tp5.payload.response.PriceResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

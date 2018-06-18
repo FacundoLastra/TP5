@@ -1,7 +1,7 @@
 package com.tp5.tp5.Controllers;
 
+import com.models.payload.request.StateRequest;
 import com.tp5.tp5.Services.StateServices;
-import com.tp5.tp5.payload.request.StateRequest;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.tp5.tp5.Controllers;
 
+import com.models.payload.request.AirportRequest;
 import com.tp5.tp5.Services.AirportsService;
-import com.tp5.tp5.payload.request.AirportRequest;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

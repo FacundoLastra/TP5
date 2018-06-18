@@ -1,9 +1,9 @@
 package com.tp5.tp5.Controllers;
 
-import com.tp5.tp5.Models.Cabin;
+import com.models.Models.Cabin;
+import com.models.payload.request.CabinRequest;
 import com.tp5.tp5.Services.CabinService;
 import com.tp5.tp5.Services.RouteService;
-import com.tp5.tp5.payload.request.CabinRequest;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

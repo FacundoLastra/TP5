@@ -1,8 +1,8 @@
 package com.tp5.tp5.Controllers;
 
-import com.tp5.tp5.Models.City;
+import com.models.Models.City;
+import com.models.payload.request.CityRequest;
 import com.tp5.tp5.Services.CityService;
-import com.tp5.tp5.payload.request.CityRequest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

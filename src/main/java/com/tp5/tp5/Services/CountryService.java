@@ -1,8 +1,8 @@
 package com.tp5.tp5.Services;
 
-import com.tp5.tp5.Models.Country;
+import com.models.Models.Country;
+import com.models.payload.response.CountryResponse;
 import com.tp5.tp5.Repository.CountryRepository;
-import com.tp5.tp5.payload.response.CountryResponse;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

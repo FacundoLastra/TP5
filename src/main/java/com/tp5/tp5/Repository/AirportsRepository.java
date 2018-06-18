@@ -1,6 +1,6 @@
 package com.tp5.tp5.Repository;
 
-import com.tp5.tp5.Models.Airports;
+import com.models.Models.Airports;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;

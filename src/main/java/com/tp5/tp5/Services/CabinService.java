@@ -1,8 +1,8 @@
 package com.tp5.tp5.Services;
 
-import com.tp5.tp5.Models.Cabin;
+import com.models.Models.Cabin;
+import com.models.payload.response.CabinResponse;
 import com.tp5.tp5.Repository.CabinRepository;
-import com.tp5.tp5.payload.response.CabinResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

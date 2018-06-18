@@ -1,7 +1,7 @@
 package com.tp5.tp5.Controllers;
 
+import com.models.payload.request.CityRequest;
 import com.tp5.tp5.Services.CityService;
-import com.tp5.tp5.payload.request.CityRequest;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,14 +1,14 @@
 package com.tp5.tp5.Services;
 
-import com.tp5.tp5.Models.Airports;
-import com.tp5.tp5.Models.Cabin;
-import com.tp5.tp5.Models.Cabin_Route;
-import com.tp5.tp5.Models.Route;
+import com.models.Models.Airports;
+import com.models.Models.Cabin;
+import com.models.Models.Cabin_Route;
+import com.models.Models.Route;
+import com.models.payload.response.AirportResponse;
+import com.models.payload.response.RouteResponse;
 import com.tp5.tp5.Repository.AirportsRepository;
 import com.tp5.tp5.Repository.CabinRepository;
 import com.tp5.tp5.Repository.RouteRepository;
-import com.tp5.tp5.payload.response.AirportResponse;
-import com.tp5.tp5.payload.response.RouteResponse;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

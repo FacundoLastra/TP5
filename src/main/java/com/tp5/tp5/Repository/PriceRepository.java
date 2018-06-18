@@ -1,6 +1,6 @@
 package com.tp5.tp5.Repository;
 
-import com.tp5.tp5.Models.Price;
+import com.models.Models.Price;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

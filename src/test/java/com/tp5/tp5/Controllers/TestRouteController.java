@@ -1,8 +1,8 @@
 package com.tp5.tp5.Controllers;
 
-import com.tp5.tp5.Models.Route;
+import com.models.Models.Route;
+import com.models.payload.request.RouteRequest;
 import com.tp5.tp5.Services.RouteService;
-import com.tp5.tp5.payload.request.RouteRequest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

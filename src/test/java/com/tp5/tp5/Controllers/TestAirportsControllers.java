@@ -1,8 +1,8 @@
 package com.tp5.tp5.Controllers;
 
-import com.tp5.tp5.Models.Airports;
+import com.models.Models.Airports;
+import com.models.payload.request.AirportRequest;
 import com.tp5.tp5.Services.AirportsService;
-import com.tp5.tp5.payload.request.AirportRequest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

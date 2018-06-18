@@ -1,15 +1,13 @@
 package com.tp5.tp5.Services;
 
 
-import com.tp5.tp5.Models.Country;
-import com.tp5.tp5.Models.State;
+import com.models.Models.Country;
+import com.models.Models.State;
 import com.tp5.tp5.Repository.CountryRepository;
 import com.tp5.tp5.Repository.StateRepository;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 

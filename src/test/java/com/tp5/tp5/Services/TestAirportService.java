@@ -1,7 +1,7 @@
 package com.tp5.tp5.Services;
 
-import com.tp5.tp5.Models.Airports;
-import com.tp5.tp5.Models.City;
+import com.models.Models.Airports;
+import com.models.Models.City;
 import com.tp5.tp5.Repository.AirportsRepository;
 import com.tp5.tp5.Repository.CityRepository;
 import org.junit.Before;

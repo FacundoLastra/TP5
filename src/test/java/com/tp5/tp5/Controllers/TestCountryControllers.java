@@ -1,8 +1,8 @@
 package com.tp5.tp5.Controllers;
 
-import com.tp5.tp5.Models.Country;
+import com.models.Models.Country;
+import com.models.payload.request.CountryRequest;
 import com.tp5.tp5.Services.CountryService;
-import com.tp5.tp5.payload.request.CountryRequest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

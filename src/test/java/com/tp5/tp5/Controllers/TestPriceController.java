@@ -1,8 +1,8 @@
 package com.tp5.tp5.Controllers;
 
-import com.tp5.tp5.Models.Price;
+import com.models.Models.Price;
+import com.models.payload.request.PriceRequest;
 import com.tp5.tp5.Services.PriceService;
-import com.tp5.tp5.payload.request.PriceRequest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

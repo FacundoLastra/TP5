@@ -1,16 +1,15 @@
 package com.tp5.tp5.Services;
 
-import com.tp5.tp5.Models.Country;
-import com.tp5.tp5.Models.State;
+import com.models.Models.Country;
+import com.models.Models.State;
+import com.models.payload.response.StateResponse;
 import com.tp5.tp5.Repository.CountryRepository;
 import com.tp5.tp5.Repository.StateRepository;
-import com.tp5.tp5.payload.response.StateResponse;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service @NoArgsConstructor

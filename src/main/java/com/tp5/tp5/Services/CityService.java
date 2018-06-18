@@ -1,10 +1,10 @@
 package com.tp5.tp5.Services;
 
-import com.tp5.tp5.Models.City;
-import com.tp5.tp5.Models.State;
+import com.models.Models.City;
+import com.models.Models.State;
+import com.models.payload.response.CityResponse;
 import com.tp5.tp5.Repository.CityRepository;
 import com.tp5.tp5.Repository.StateRepository;
-import com.tp5.tp5.payload.response.CityResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
