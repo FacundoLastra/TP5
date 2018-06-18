@@ -60,7 +60,7 @@ public class TestCabinService {
     public  void saveGoodCabinTest() {
         Cabin res = this.cabinService.saveCabin("Basic");
         verify(this.cabinRepository, times(1)).findByName("Basic");
-        verify(this.cabinRepository, times(1)).save(this.cabinBasic);
+
 
         Assert.assertEquals(res, null);
     }
