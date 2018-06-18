@@ -2,6 +2,7 @@ package com.tp5.tp5.Controllers;
 
 import com.tp5.tp5.Services.CityService;
 import com.tp5.tp5.payload.request.CityRequest;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 @RequestMapping("/city")
 public class CityControllers {
 
@@ -26,29 +27,20 @@ public class CityControllers {
     @PutMapping
     public void addCity (@RequestBody CityRequest cityRequest) {
 
-        try {
+        this.cityService.saveCity(cityRequest.getIata(), cityRequest.getName(), cityRequest.getStateCode());
 
-            this.cityService.saveCity(cityRequest.getIata(), cityRequest.getName(), cityRequest.getStateCode());
-
-        } catch (Exception e) {
-
-        }
     }
 
     @PostMapping("/")
     public void modifyCity (@RequestBody CityRequest cityRequest){
 
-        try {
+        this.cityService.modifyCity(cityRequest.getIata(), cityRequest.getName(), cityRequest.getStateCode());
 
-            this.cityService.modifyCity(cityRequest.getIata(), cityRequest.getName(), cityRequest.getStateCode());
-
-        } catch (Exception e) {
-
-        }
     }
 
     @GetMapping
     public List getAll(){
+
         return this.cityService.getAllCitys();
     }
 

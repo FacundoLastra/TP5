@@ -2,6 +2,8 @@ package com.tp5.tp5.Controllers;
 
 import com.tp5.tp5.Services.PriceService;
 import com.tp5.tp5.payload.request.PriceRequest;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,7 @@ import java.time.format.DateTimeParseException;
 import java.util.List;
 
 @RestController
+@AllArgsConstructor @NoArgsConstructor
 @RequestMapping("/price")
 public class PriceController {
 
