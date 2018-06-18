@@ -51,15 +51,15 @@ public class PriceService {
     }
 
     public Price updatePrice(long priceId,float price, String desde, String hasta){
-        Price priceToUpdate = this.priceRepository.findById(priceId).get();
-        if (priceToUpdate != null){
-            priceToUpdate.setPrice(price);
-            priceToUpdate.setDesde(desde);
-            priceToUpdate.setHasta(hasta);
-            this.priceRepository.save(priceToUpdate);
+        Optional<Price> priceToUpdate = this.priceRepository.findById(priceId);
+        if (priceToUpdate.isPresent()){
+            priceToUpdate.get().setPrice(price);
+            priceToUpdate.get().setDesde(desde);
+            priceToUpdate.get().setHasta(hasta);
+            this.priceRepository.save(priceToUpdate.get());
         }
 
-        return priceToUpdate;
+        return priceToUpdate.isPresent()?priceToUpdate.get():null;
     }
     public List getAllPrices(){
         List<PriceResponse> response = new ArrayList<>();
