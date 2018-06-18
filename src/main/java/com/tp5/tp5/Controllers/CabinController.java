@@ -4,12 +4,15 @@ import com.tp5.tp5.Models.Cabin;
 import com.tp5.tp5.Services.CabinService;
 import com.tp5.tp5.Services.RouteService;
 import com.tp5.tp5.payload.request.CabinRequest;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor @NoArgsConstructor
 @RestController
 @RequestMapping("/cabin")
 public class CabinController {

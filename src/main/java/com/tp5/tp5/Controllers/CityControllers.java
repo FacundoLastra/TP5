@@ -2,6 +2,7 @@ package com.tp5.tp5.Controllers;
 
 import com.tp5.tp5.Services.CityService;
 import com.tp5.tp5.payload.request.CityRequest;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 @RequestMapping("/city")
 public class CityControllers {
 

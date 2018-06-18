@@ -64,7 +64,7 @@ public class TestPriceService {
         when(this.routeService.getById((long) 1)).thenReturn(empatyRoute);
 
         when(this.routeService.getById((long) 2)).thenReturn(this.routeOptional);
-        when(this.routeOptional.get().getCabinRouteSet()).thenReturn(this.asd);
+        //when(this.routeOptional.get().getCabinRouteSet()).thenReturn(this.asd);
 
     }
 

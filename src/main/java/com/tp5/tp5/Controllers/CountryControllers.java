@@ -2,6 +2,8 @@ package com.tp5.tp5.Controllers;
 import com.tp5.tp5.Models.Country;
 import com.tp5.tp5.Services.CountryService;
 import com.tp5.tp5.payload.request.CountryRequest;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,7 @@ import javax.persistence.PersistenceException;
 import java.util.List;
 
 @RestController
+@NoArgsConstructor @AllArgsConstructor
 @RequestMapping("/country")
 public class CountryControllers {
 
@@ -32,7 +35,6 @@ public class CountryControllers {
         return response;
     }
 
-    //@RequestMapping(method = RequestMethod.POST, produces = "application/json")
     @PutMapping
     public ResponseEntity addCountry (@RequestBody CountryRequest countryRequest){
         try {
@@ -42,11 +44,13 @@ public class CountryControllers {
         }
         return new ResponseEntity(HttpStatus.CREATED);
     }
+
     @PostMapping("/update")
     public void modifyCountry (@RequestBody CountryRequest countryRequest) {
 
         this.countryService.modifyCountry(countryRequest.getCode(), countryRequest.getName(),countryRequest.getId());
     }
+
     @GetMapping
     public List getAll(){
         return this.countryService.getAllCountrys();
