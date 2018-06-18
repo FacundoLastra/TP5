@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,5 +62,12 @@ public class TestPriceController {
         List rtn = this.priceController.getAllPrices();
         Assert.assertEquals(this.priceList, rtn);
         verify(this.priceService, times(1)).getAllPrices();
+    }
+    @Test
+    public void getCabinsAndPrices(){
+        String dateString = "10-05-2008";
+        this.priceController.getCabinsAndPrices("EZE","FKA",dateString);
+        when(this.priceService.getPriceWhitRouteAndDate("EZE","FKA",LocalDate.of(2008,05,10))).thenReturn(new ArrayList());
+
     }
 }
