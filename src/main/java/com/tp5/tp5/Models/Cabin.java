@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="cabin")
-@Getter @Setter @NoArgsConstructor @EqualsAndHashCode @AllArgsConstructor
+@Getter @Setter @NoArgsConstructor  @AllArgsConstructor
 public class Cabin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

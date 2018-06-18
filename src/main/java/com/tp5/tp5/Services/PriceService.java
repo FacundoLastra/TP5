@@ -73,7 +73,7 @@ public class PriceService {
             pricesResponse = new ArrayList<>();
            for (Cabin_Route cabinRoute: route.getCabinRouteSet() ) {
                for (Price price:cabinRoute.getPriceList()) {
-                   if (price.getDesde().compareTo(fecha)<1 && price.getHasta().compareTo(fecha)>1){
+                   if (price.getDesde().isBefore(fecha) && price.getHasta().isAfter(fecha)){
                        pricesResponse.add(new PriceResponse(price));
                        break;
                    }

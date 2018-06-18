@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "cabin_route")
-@Getter @Setter @NoArgsConstructor @EqualsAndHashCode @AllArgsConstructor
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Cabin_Route {
 
     @Id
