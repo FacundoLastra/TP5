@@ -23,36 +23,36 @@ public class CountryControllers {
 
 
     @DeleteMapping("{id}")
-    public ResponseEntity deleteCountry (@PathVariable Long id) {
+    public ResponseEntity deleteCountry(@PathVariable Long id) {
         ResponseEntity response;
         try {
             this.countryService.deleteCountry(id);
             response = new ResponseEntity(HttpStatus.OK);
 
-        }catch (PersistenceException pe){
+        } catch (PersistenceException pe) {
             response = new ResponseEntity(HttpStatus.NOT_FOUND);
         }
         return response;
     }
 
     @PutMapping
-    public ResponseEntity addCountry (@RequestBody CountryRequest countryRequest){
+    public ResponseEntity addCountry(@RequestBody CountryRequest countryRequest) {
         try {
-            this.countryService.saveCountry(new Country(countryRequest.getName(),countryRequest.getCode()));
-        }catch (PersistenceException  pe) {
+            this.countryService.saveCountry(new Country(countryRequest.getName(), countryRequest.getCode()));
+        } catch (PersistenceException  pe) {
             new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @PostMapping("/update")
-    public void modifyCountry (@RequestBody CountryRequest countryRequest) {
+    public void modifyCountry(@RequestBody CountryRequest countryRequest) {
 
-        this.countryService.modifyCountry(countryRequest.getCode(), countryRequest.getName(),countryRequest.getId());
+        this.countryService.modifyCountry(countryRequest.getCode(), countryRequest.getName(), countryRequest.getId());
     }
 
     @GetMapping
-    public List getAll(){
+    public List getAll() {
         return this.countryService.getAllCountrys();
     }
 }

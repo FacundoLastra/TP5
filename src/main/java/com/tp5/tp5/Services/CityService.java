@@ -21,21 +21,21 @@ public class CityService {
     private StateRepository stateRepository;
 
 
-    public boolean saveCity (String iata, String name, String codeState) {
+    public boolean saveCity(String iata, String name, String codeState) {
 
         State state = this.stateRepository.findByIata(codeState).get();
 
        City city = this.cityRepository.save(new City(iata, name, state));
 
-        return city!=null?true:false;
+        return city != null ? true : false;
     }
 
-    public void deleteCity (Long id) {
+    public void deleteCity(Long id) {
 
         this.cityRepository.deleteById(id);
     }
 
-    public void modifyCity (String iata, String name, String codeState) {
+    public void modifyCity(String iata, String name, String codeState) {
 
         City city = this.cityRepository.findByIata(iata).get();
 
@@ -48,9 +48,9 @@ public class CityService {
         this.cityRepository.save(city);
     }
 
-    public List getAllCitys () {
+    public List getAllCitys() {
         List<CityResponse> response = new ArrayList<>();
-        this.cityRepository.findAll().forEach(c->response.add(new CityResponse(c)));
+        this.cityRepository.findAll().forEach(c -> response.add(new CityResponse(c)));
         return response;
     }
 }

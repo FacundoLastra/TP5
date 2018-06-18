@@ -21,25 +21,25 @@ public class AirportsService {
     @Autowired
     private CityRepository cityRepository;
 
-    public boolean saveAirport (String iata, String name, String codeCity, float longitud, float latitud) {
+    public boolean saveAirport(String iata, String name, String codeCity, float longitud, float latitud) {
 
         City city = this.cityRepository.findByIata(codeCity).get();
 
-        Airports airport= this.airportsRepository.save(new Airports(iata, name, city, longitud, latitud));
+        Airports airport = this.airportsRepository.save(new Airports(iata, name, city, longitud, latitud));
 
-       return airport!=null?true:false;
+       return airport != null ? true : false;
     }
 
-    public void deleteAirport (Long id) {
+    public void deleteAirport(Long id) {
 
         this.airportsRepository.deleteById(id);
     }
 
-    public void modifyAirport (String iata, String name, String codeCity, float longitud, float latitud) {
+    public void modifyAirport(String iata, String name, String codeCity, float longitud, float latitud) {
 
         Optional<City> city = this.cityRepository.findByIata(codeCity);
         Optional<Airports> optionalAirports = this.airportsRepository.findByIata(iata);
-        if ( city.isPresent() && optionalAirports.isPresent() ) {
+        if (city.isPresent() && optionalAirports.isPresent()) {
             Airports airports = optionalAirports.get();
             airports.setCity(city.get());
             airports.setIata(iata);
@@ -51,10 +51,10 @@ public class AirportsService {
         }
     }
 
-    public List getAllAirports () {
+    public List getAllAirports() {
 
         List<AirportResponse> response = new ArrayList<>();
-        this.airportsRepository.findAll().forEach(c->response.add(new AirportResponse(c)));
+        this.airportsRepository.findAll().forEach(c -> response.add(new AirportResponse(c)));
         return response;
     }
 }

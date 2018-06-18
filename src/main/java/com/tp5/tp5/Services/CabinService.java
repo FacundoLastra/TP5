@@ -24,7 +24,7 @@ public class CabinService {
         Optional<Cabin> cabin = this.cabinRepository.findByName(name);
         Cabin newCabin = null;
 
-        if (!cabin.isPresent()){
+        if (!cabin.isPresent()) {
 
             newCabin = this.cabinRepository.save(new Cabin(name));
         }
@@ -36,35 +36,36 @@ public class CabinService {
 
         Optional<Cabin> cabin = this.cabinRepository.findById(id);
 
-        if (cabin.isPresent()){
+        if (cabin.isPresent()) {
 
             cabin.get().setName(name);
             this.cabinRepository.save(cabin.get());
         }
 
-        return HttpStatus.valueOf ((cabin.isPresent()==true) ? (HttpServletResponse.SC_OK) : (HttpServletResponse.SC_CREATED));
+        return HttpStatus.valueOf((cabin.isPresent() == true) ? (HttpServletResponse.SC_OK) : (HttpServletResponse.SC_CREATED));
     }
 
-    public HttpStatus deleteCabin (long id) {
+    public HttpStatus deleteCabin(long id) {
 
         Optional<Cabin> cabin = this.cabinRepository.findById(id);
 
-        if (cabin.isPresent()){
+        if (cabin.isPresent()) {
 
-            this.cabinRepository.deleteById(id); }
+            this.cabinRepository.deleteById(id);
+        }
 
-        return HttpStatus.valueOf ((cabin.isPresent()==true) ? (HttpServletResponse.SC_OK) : (HttpServletResponse.SC_CREATED));
+        return HttpStatus.valueOf((cabin.isPresent() == true) ? (HttpServletResponse.SC_OK) : (HttpServletResponse.SC_CREATED));
     }
 
     public List getAllCabins() {
 
         List<CabinResponse> response = new ArrayList<>();
-        this.cabinRepository.findAll().forEach(c->response.add(new CabinResponse(c)));
+        this.cabinRepository.findAll().forEach(c -> response.add(new CabinResponse(c)));
 
         return response;
     }
 
-    public Cabin getById(long id){
+    public Cabin getById(long id) {
 
         Optional<Cabin> cabin = this.cabinRepository.findById(id);
 

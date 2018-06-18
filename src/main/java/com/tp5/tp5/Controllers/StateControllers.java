@@ -19,7 +19,7 @@ public class StateControllers {
 
 
     @DeleteMapping("{id}")
-    public void deleteState (@PathVariable Long id) {
+    public void deleteState(@PathVariable Long id) {
 
         this.stateServices.deleteState(id);
     }
@@ -31,7 +31,7 @@ public class StateControllers {
     }
 
     @PostMapping
-    public void modifyState (@RequestBody StateRequest stateRequest) {
+    public void modifyState(@RequestBody StateRequest stateRequest) {
 
         this.stateServices.modifyState(stateRequest.getIata_code(), stateRequest.getName(), stateRequest.getCountryCode());
 

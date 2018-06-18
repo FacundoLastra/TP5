@@ -24,21 +24,21 @@ public class StateServices {
         this.countryRepository = countryRepository;
     }
 
-    public boolean saveState (String iataCode, String name, String codeCountry) {
+    public boolean saveState(String iataCode, String name, String codeCountry) {
         State state = null;
         Country country = this.countryRepository.findByCode(codeCountry).get();
-        if (country!=null){
+        if (country != null) {
             state = this.stateRepository.save(new State(country, iataCode, name));
         }
-        return state!=null?true:false;
+        return state != null ? true : false;
     }
 
-    public void deleteState (Long id) {
+    public void deleteState(Long id) {
 
         this.stateRepository.deleteById(id);
     }
 
-    public void modifyState (String iataCode, String name, String codeCountry) {
+    public void modifyState(String iataCode, String name, String codeCountry) {
 
         State state = this.stateRepository.findByIata(iataCode).get();
 
@@ -51,9 +51,9 @@ public class StateServices {
         this.stateRepository.save(state);
     }
 
-    public List getAllStates () {
+    public List getAllStates() {
         List<StateResponse> response = new ArrayList<>();
-        this.stateRepository.findAll().forEach(c->response.add(new StateResponse(c)));
+        this.stateRepository.findAll().forEach(c -> response.add(new StateResponse(c)));
         return response;
     }
 }

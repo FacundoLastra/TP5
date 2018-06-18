@@ -19,27 +19,27 @@ public class CityControllers {
 
 
     @DeleteMapping("{id}")
-    public void deleteCity (@PathVariable Long id) {
+    public void deleteCity(@PathVariable Long id) {
 
         this.cityService.deleteCity(id);
     }
 
     @PutMapping
-    public void addCity (@RequestBody CityRequest cityRequest) {
+    public void addCity(@RequestBody CityRequest cityRequest) {
 
         this.cityService.saveCity(cityRequest.getIata(), cityRequest.getName(), cityRequest.getStateCode());
 
     }
 
     @PostMapping("/")
-    public void modifyCity (@RequestBody CityRequest cityRequest){
+    public void modifyCity(@RequestBody CityRequest cityRequest) {
 
         this.cityService.modifyCity(cityRequest.getIata(), cityRequest.getName(), cityRequest.getStateCode());
 
     }
 
     @GetMapping
-    public List getAll(){
+    public List getAll() {
 
         return this.cityService.getAllCitys();
     }

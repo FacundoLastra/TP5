@@ -23,28 +23,28 @@ public class CabinController {
     private RouteService routeService;
 
     @PutMapping
-    public void addCabin(@RequestBody CabinRequest cabinRequest){
+    public void addCabin(@RequestBody CabinRequest cabinRequest) {
 
          Cabin addedCabin = this.cabinService.saveCabin(cabinRequest.getName());
 
-        if (addedCabin != null){
-            this.routeService.addCabin(cabinRequest.getRouteId(),addedCabin.getId());
+        if (addedCabin != null) {
+            this.routeService.addCabin(cabinRequest.getRouteId(), addedCabin.getId());
         }
     }
 
     @DeleteMapping("{id}")
-    public HttpStatus deleteCabin(@PathVariable long id){
+    public HttpStatus deleteCabin(@PathVariable long id) {
 
         return this.cabinService.deleteCabin(id);
     }
 
     @PostMapping("/update")
-    public void updateCabin(@RequestBody CabinRequest cabinRequest){
-        this.cabinService.modifyCabin(cabinRequest.getId(),cabinRequest.getName());
+    public void updateCabin(@RequestBody CabinRequest cabinRequest) {
+        this.cabinService.modifyCabin(cabinRequest.getId(), cabinRequest.getName());
     }
 
     @GetMapping
-    public List getAllCabins(){
+    public List getAllCabins() {
         return this.cabinService.getAllCabins();
     }
 

@@ -22,17 +22,17 @@ public class CountryService {
         this.countryRepository = countryRepository;
     }
 
-    public boolean saveCountry (Country country) throws PersistenceException  {
+    public boolean saveCountry(Country country) throws PersistenceException  {
         Country ret = this.countryRepository.save(country);
-        return ret!=null?true:false;
+        return ret != null ? true : false;
     }
 
-    public void deleteCountry (Long id) throws PersistenceException {
+    public void deleteCountry(Long id) throws PersistenceException {
 
         this.countryRepository.deleteById(id);
     }
 
-    public void modifyCountry (String code, String name ,long id) throws PersistenceException{
+    public void modifyCountry(String code, String name, long id) throws PersistenceException {
 
         Country country = this.countryRepository.findById(id).get();
 
@@ -43,7 +43,7 @@ public class CountryService {
     }
     public List getAllCountrys() throws PersistenceException {
          List<CountryResponse> response = new ArrayList<>();
-         this.countryRepository.findAll().forEach(c->response.add(new CountryResponse(c)));
+         this.countryRepository.findAll().forEach(c -> response.add(new CountryResponse(c)));
          return response;
     }
 }

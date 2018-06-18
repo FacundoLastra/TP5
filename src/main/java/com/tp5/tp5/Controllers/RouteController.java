@@ -18,26 +18,26 @@ public class RouteController {
     private RouteService routeService;
 
     @PutMapping
-    public boolean addRoute(@RequestBody RouteRequest routeRequest){
+    public boolean addRoute(@RequestBody RouteRequest routeRequest) {
 
-        return this.routeService.saveRoute(routeRequest.getIataAirportOrigin(),routeRequest.getIataAirportDestination(),
+        return this.routeService.saveRoute(routeRequest.getIataAirportOrigin(), routeRequest.getIataAirportDestination(),
                 routeRequest.getDistance());
     }
 
     @DeleteMapping("{id}")
-    public void deleteRoute(@PathVariable("id") long idRoute){
+    public void deleteRoute(@PathVariable("id") long idRoute) {
         this.routeService.deleteRoute(idRoute);
     }
 
     @PostMapping("/update")
-    public void updateRoute(@RequestBody RouteRequest routeRequest){
+    public void updateRoute(@RequestBody RouteRequest routeRequest) {
         this.routeService.updateRoute(routeRequest.getId(),
                 routeRequest.getIataAirportOrigin(),
-                routeRequest.getIataAirportDestination(),routeRequest.getDistance());
+                routeRequest.getIataAirportDestination(), routeRequest.getDistance());
     }
 
     @GetMapping
-    public List getAllRoutes(){
+    public List getAllRoutes() {
         return this.routeService.getAllRoutes();
     }
 
@@ -48,7 +48,7 @@ public class RouteController {
     }
 
     @GetMapping("/getdestinationairports/{iata}")
-    public List getAiportDestination(@PathVariable String iata){
+    public List getAiportDestination(@PathVariable String iata) {
 
         return this.routeService.getDestinationAirportsForOrigin(iata);
     }
