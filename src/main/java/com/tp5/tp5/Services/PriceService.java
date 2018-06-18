@@ -6,13 +6,12 @@ import com.tp5.tp5.Models.Route;
 import com.tp5.tp5.Repository.PriceRepository;
 import com.tp5.tp5.payload.response.PriceResponse;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
