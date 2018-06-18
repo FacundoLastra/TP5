@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RouteService {
@@ -104,6 +105,17 @@ public class RouteService {
 
     public Route getById(long id){
         return this.routeRepository.findById(id).get();
+    }
+
+    public Route getRouteByAirportIataOriginAndDestination(String iataOrigin, String iataDestination){
+        Optional<Airports> origin = this.airportsRepository.findByIata(iataOrigin);
+        Optional<Airports> destination = this.airportsRepository.findByIata(iataDestination);
+        Optional<Route> returnRoute = null;
+        if (origin.isPresent() && destination.isPresent())
+        {
+            returnRoute = this.routeRepository.findByOriginAndDestination(origin.get(),destination.get());
+        }
+        return returnRoute.isPresent()?returnRoute.get():null;
     }
 
 

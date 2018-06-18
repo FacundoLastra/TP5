@@ -5,10 +5,11 @@ import com.tp5.tp5.Models.Price;
 import com.tp5.tp5.Models.Route;
 import com.tp5.tp5.Repository.PriceRepository;
 import com.tp5.tp5.payload.response.PriceResponse;
-import org.joda.time.DateTime;
+;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -53,5 +54,21 @@ public class PriceService {
         return response;
     }
 
+    public List getPriceWhitRouteAndDate(String iataOrigin, String iataDestination, LocalDate fecha){
+       Route route = this.routeService.getRouteByAirportIataOriginAndDestination(iataOrigin,iataDestination);
+        List<PriceResponse> pricesResponse = null;
+       if (route!=null){
+            pricesResponse = new ArrayList<>();
+           for (Cabin_Route cabinRoute: route.getCabinRouteSet() ) {
+               for (Price price:cabinRoute.getPriceList()) {
+                   if (price.getDesde().compareTo(fecha)<1 && price.getHasta().compareTo(fecha)>1){
+                       pricesResponse.add(new PriceResponse(price));
+                       break;
+                   }
+               }
+           }
+       }
+       return pricesResponse;
+    }
 
 }

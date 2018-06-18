@@ -6,6 +6,9 @@ import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 @RestController
@@ -33,5 +36,20 @@ public class PriceController {
     @GetMapping
     public List getAllPrices(){
         return this.priceService.getAllPrices();
+    }
+
+    @GetMapping("/getCabinsAndPrices/iataOrigin/{iataOrigin}/iataDestination/{iataDestination}/fecha/{fecha}")
+    public List getCabinsAndPrices (@PathVariable("iataOrigin") String iataOrigin, @PathVariable("iataDestination") String iataDestination, @PathVariable("fecha") String fecha){
+
+
+        List priceResponse = this.priceService.getPriceWhitRouteAndDate(iataOrigin,iataDestination,this.stringToDateTime(fecha));
+        return priceResponse;
+    }
+
+    private LocalDate stringToDateTime(String time) throws DateTimeParseException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MM-yyyy");
+        //convert String to LocalDate
+        LocalDate localDate = LocalDate.parse(time, formatter);
+        return localDate;
     }
 }
