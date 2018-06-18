@@ -19,13 +19,13 @@ public class AirportsControllers {
 
 
     @DeleteMapping("{id}")
-    public void deleteAirport (@PathVariable Long id) {
+    public void deleteAirport ( @PathVariable Long id) {
 
         this.airportsService.deleteAirport(id);
     }
 
     @PutMapping
-    public void addAirport (@RequestBody AirportRequest airportRequest) {
+    public void addAirport ( @RequestBody AirportRequest airportRequest) {
 
         this.airportsService.saveAirport(airportRequest.getIata(),
                 airportRequest.getName(), airportRequest.getCityCode(),
@@ -34,7 +34,7 @@ public class AirportsControllers {
     }
 
     @PostMapping("/")
-    public void modifyAirport (@RequestBody AirportRequest airportRequest) {
+    public void modifyAirport ( @RequestBody AirportRequest airportRequest) {
 
         this.airportsService.modifyAirport(airportRequest.getIata(), airportRequest.getName(),
                 airportRequest.getCityCode(), airportRequest.getLongitud(), airportRequest.getLatitud());
