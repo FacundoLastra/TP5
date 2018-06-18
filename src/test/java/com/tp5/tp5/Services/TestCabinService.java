@@ -102,6 +102,3 @@ public class TestCabinService {
         Assert.assertEquals(res, this.cabinBasic);
     }
 }
-/*
-
- */

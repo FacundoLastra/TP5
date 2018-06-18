@@ -48,7 +48,6 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<scope>build</scope>
 		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>

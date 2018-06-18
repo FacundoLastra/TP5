@@ -30,12 +30,12 @@ public class RouteService {
 
     public boolean saveRoute(String aitaAirportOrigin, String aitaAirportDestination,float distance){
         boolean res=false;
-        Airports airOrigin=this.airportsRepository.findByIata(aitaAirportOrigin).get();
-        Airports airDestination=this.airportsRepository.findByIata(aitaAirportDestination).get();
+        Optional<Airports> airOrigin=this.airportsRepository.findByIata(aitaAirportOrigin);
+        Optional<Airports> airDestination=this.airportsRepository.findByIata(aitaAirportDestination);
 
-        if(airOrigin!=null &&airDestination !=null){
-        this.routeRepository.save(new Route(distance,airOrigin,airDestination));
-        res = true;
+        if(airOrigin.isPresent() && airDestination.isPresent()){
+            this.routeRepository.save(new Route(distance,airOrigin.get(),airDestination.get()));
+            res = true;
         }
 
         return res;
@@ -47,15 +47,15 @@ public class RouteService {
     }
 
     public void addCabin(long idRoute, long idCabin){
-        Route route = this.routeRepository.findById(idRoute).get();
-        Cabin cabin = this.cabinRepository.findById(idCabin).get();
+        Optional<Route> route = this.routeRepository.findById(idRoute);
+        Optional<Cabin> cabin = this.cabinRepository.findById(idCabin);
 
-        if (route != null && cabin != null){
-            Cabin_Route cabin_route= new Cabin_Route(cabin,route);
+        if (route.isPresent() && cabin.isPresent()){
+            Cabin_Route cabin_route= new Cabin_Route(cabin.get(),route.get());
 
-            route.getCabinRouteSet().add(cabin_route);
+            route.get().getCabinRouteSet().add(cabin_route);
 
-            this.routeRepository.save(route);
+            this.routeRepository.save(route.get());
         }
     }
 
@@ -113,7 +113,7 @@ public class RouteService {
     public Route getRouteByAirportIataOriginAndDestination(String iataOrigin, String iataDestination){
         Optional<Airports> origin = this.airportsRepository.findByIata(iataOrigin);
         Optional<Airports> destination = this.airportsRepository.findByIata(iataDestination);
-        Optional<Route> returnRoute = null;
+        Optional<Route> returnRoute = Optional.empty();
         if (origin.isPresent() && destination.isPresent())
         {
             returnRoute = this.routeRepository.findByOriginAndDestination(origin.get(),destination.get());
