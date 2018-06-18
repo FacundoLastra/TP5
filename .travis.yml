@@ -1,0 +1,26 @@
+language: java
+jdk:
+- oraclejdk8
+
+install:
+- mvn -N io.takari:maven:wrapper
+- ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+script: mvn clean test
+
+cache:
+  directories:
+  - $HOME/.m2
+
+notifications:
+
+  email:
+
+    recipients:
+
+      - facundolastra94@gmail.com
+      - matiassimone.d@gmail.com
+
+    on_success: change # default: change
+
+    on_failure: always # default: always
