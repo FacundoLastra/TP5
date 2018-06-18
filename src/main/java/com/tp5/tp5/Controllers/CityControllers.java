@@ -27,29 +27,20 @@ public class CityControllers {
     @PutMapping
     public void addCity (@RequestBody CityRequest cityRequest) {
 
-        try {
+        this.cityService.saveCity(cityRequest.getIata(), cityRequest.getName(), cityRequest.getStateCode());
 
-            this.cityService.saveCity(cityRequest.getIata(), cityRequest.getName(), cityRequest.getStateCode());
-
-        } catch (Exception e) {
-
-        }
     }
 
     @PostMapping("/")
     public void modifyCity (@RequestBody CityRequest cityRequest){
 
-        try {
+        this.cityService.modifyCity(cityRequest.getIata(), cityRequest.getName(), cityRequest.getStateCode());
 
-            this.cityService.modifyCity(cityRequest.getIata(), cityRequest.getName(), cityRequest.getStateCode());
-
-        } catch (Exception e) {
-
-        }
     }
 
     @GetMapping
     public List getAll(){
+
         return this.cityService.getAllCitys();
     }
 

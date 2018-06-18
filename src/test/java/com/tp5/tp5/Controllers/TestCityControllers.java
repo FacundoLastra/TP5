@@ -1,6 +1,5 @@
-package com.tp5.tp5.Controller;
+package com.tp5.tp5.Controllers;
 
-import com.tp5.tp5.Controllers.CityControllers;
 import com.tp5.tp5.Models.City;
 import com.tp5.tp5.Services.CityService;
 import com.tp5.tp5.payload.request.CityRequest;

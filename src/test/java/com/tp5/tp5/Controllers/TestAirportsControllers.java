@@ -1,6 +1,5 @@
-package com.tp5.tp5.Controller;
+package com.tp5.tp5.Controllers;
 
-import com.tp5.tp5.Controllers.AirportsControllers;
 import com.tp5.tp5.Models.Airports;
 import com.tp5.tp5.Services.AirportsService;
 import com.tp5.tp5.payload.request.AirportRequest;
@@ -25,6 +24,8 @@ public class TestAirportsControllers {
 
     private List<Airports> airportsList;
 
+    private Exception exception;
+
     @Before
     public void config() {
 
@@ -34,6 +35,8 @@ public class TestAirportsControllers {
         this.airportRequest = new AirportRequest();
         this.airports = new Airports();
         this.airportsList = new ArrayList<>();
+
+        this.exception = new NullPointerException();
 
         when(this.airportsService.getAllAirports()).thenReturn(this.airportsList);
     }

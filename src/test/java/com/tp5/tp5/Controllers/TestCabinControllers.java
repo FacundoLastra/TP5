@@ -1,6 +1,5 @@
-package com.tp5.tp5.Controller;
+package com.tp5.tp5.Controllers;
 
-import com.tp5.tp5.Controllers.CabinController;
 import com.tp5.tp5.Models.Airports;
 import com.tp5.tp5.Models.Cabin;
 import com.tp5.tp5.Services.CabinService;

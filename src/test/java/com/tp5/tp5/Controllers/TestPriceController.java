@@ -1,6 +1,5 @@
-package com.tp5.tp5.Controller;
+package com.tp5.tp5.Controllers;
 
-import com.tp5.tp5.Controllers.PriceController;
 import com.tp5.tp5.Models.Price;
 import com.tp5.tp5.Services.PriceService;
 import com.tp5.tp5.payload.request.PriceRequest;

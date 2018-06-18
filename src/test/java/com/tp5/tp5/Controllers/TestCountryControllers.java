@@ -1,6 +1,5 @@
-package com.tp5.tp5.Controller;
+package com.tp5.tp5.Controllers;
 
-import com.tp5.tp5.Controllers.CountryControllers;
 import com.tp5.tp5.Models.Country;
 import com.tp5.tp5.Services.CountryService;
 import com.tp5.tp5.payload.request.CountryRequest;

@@ -27,25 +27,17 @@ public class AirportsControllers {
     @PutMapping
     public void addAirport (@RequestBody AirportRequest airportRequest) {
 
-        try {
+        this.airportsService.saveAirport(airportRequest.getIata(),
+                airportRequest.getName(), airportRequest.getCityCode(),
+                airportRequest.getLongitud(), airportRequest.getLatitud());
 
-            this.airportsService.saveAirport(airportRequest.getIata(), airportRequest.getName(), airportRequest.getCityCode(), airportRequest.getLongitud(), airportRequest.getLatitud());
-
-        } catch (Exception e) {
-
-        }
     }
 
     @PostMapping("/")
     public void modifyAirport (@RequestBody AirportRequest airportRequest) {
 
-        try {
-
-            this.airportsService.modifyAirport(airportRequest.getIata(), airportRequest.getName(), airportRequest.getCityCode(), airportRequest.getLongitud(), airportRequest.getLatitud());
-
-        } catch (Exception e) {
-
-        }
+        this.airportsService.modifyAirport(airportRequest.getIata(), airportRequest.getName(),
+                airportRequest.getCityCode(), airportRequest.getLongitud(), airportRequest.getLatitud());
     }
 
     @GetMapping
@@ -53,4 +45,5 @@ public class AirportsControllers {
 
         return this.airportsService.getAllAirports();
     }
+
 }
