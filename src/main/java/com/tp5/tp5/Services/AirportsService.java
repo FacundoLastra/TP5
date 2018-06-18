@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service @AllArgsConstructor
 public class AirportsService {
@@ -36,17 +37,18 @@ public class AirportsService {
 
     public void modifyAirport (String iata, String name, String codeCity, float longitud, float latitud) {
 
-        City city = this.cityRepository.findByIata(codeCity).get();
+        Optional<City> city = this.cityRepository.findByIata(codeCity);
+        Optional<Airports> optionalAirports = this.airportsRepository.findByIata(iata);
+        if ( city.isPresent() && optionalAirports.isPresent() ) {
+            Airports airports = optionalAirports.get();
+            airports.setCity(city.get());
+            airports.setIata(iata);
+            airports.setLatitud(latitud);
+            airports.setLongitud(longitud);
+            airports.setName(name);
 
-        Airports airports = this.airportsRepository.findByIata(iata).get();
-
-        airports.setCity(city);
-        airports.setIata(iata);
-        airports.setLatitud(latitud);
-        airports.setLongitud(longitud);
-        airports.setName(name);
-
-        this.airportsRepository.save(airports);
+            this.airportsRepository.save(airports);
+        }
     }
 
     public List getAllAirports () {

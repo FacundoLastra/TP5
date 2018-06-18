@@ -25,7 +25,7 @@ public class PriceController {
         this.priceService.savePrice(priceRequest.getIdCabin(),priceRequest.getIdRoute(),priceRequest.getPrice(), priceRequest.getDesde(), priceRequest.getHasta());
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("{idPrice}")
     public void deletePrice(@PathVariable long idPrice){
         this.priceService.deletePrice(idPrice);
     }
