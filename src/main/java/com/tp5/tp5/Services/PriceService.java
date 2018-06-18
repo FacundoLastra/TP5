@@ -5,16 +5,19 @@ import com.tp5.tp5.Models.Price;
 import com.tp5.tp5.Models.Route;
 import com.tp5.tp5.Repository.PriceRepository;
 import com.tp5.tp5.payload.response.PriceResponse;
-;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service @AllArgsConstructor
 public class PriceService {
 
     @Autowired
@@ -24,13 +27,23 @@ public class PriceService {
     @Autowired
     private RouteService routeService;
 
-    public void savePrice(long idCabin,long idRoute, float price, String desde, String hasta)
-    {
-        Route route = this.routeService.getById(idRoute);
-        Optional<Cabin_Route> cabinRoute = route.getCabinRouteSet().stream().filter(x -> x.getCabin().getId() == idCabin).findFirst();
-        if (cabinRoute.isPresent()) {
-            this.priceRepository.save(new Price(price, desde, hasta, cabinRoute.get()));
+    public HttpStatus savePrice(long idCabin,long idRoute, float price, String desde, String hasta) {
+
+        Optional<Cabin_Route> cabinRoute = Optional.empty();
+        Optional<Route> route = this.routeService.getById(idRoute);
+        Price rtn = null;
+
+        if (route.isPresent()) {
+
+            cabinRoute = route.get().getCabinRouteSet().stream().filter(x -> x.getCabin().getId() == idCabin).findFirst();
         }
+
+        if (cabinRoute.isPresent()) {
+
+            rtn = this.priceRepository.save(new Price(price, desde, hasta, cabinRoute.get()));
+        }
+
+        return HttpStatus.valueOf ((rtn != null) ? (HttpServletResponse.SC_OK) : (HttpServletResponse.SC_BAD_REQUEST));
     }
 
     public void deletePrice(long idPrice){
@@ -38,15 +51,15 @@ public class PriceService {
     }
 
     public Price updatePrice(long priceId,float price, String desde, String hasta){
-        Price priceToUpdate = this.priceRepository.findById(priceId).get();
-        if (priceToUpdate != null){
-            priceToUpdate.setPrice(price);
-            priceToUpdate.setDesde(desde);
-            priceToUpdate.setHasta(hasta);
-            this.priceRepository.save(priceToUpdate);
+        Optional<Price> priceToUpdate = this.priceRepository.findById(priceId);
+        if (priceToUpdate.isPresent()){
+            priceToUpdate.get().setPrice(price);
+            priceToUpdate.get().setDesde(desde);
+            priceToUpdate.get().setHasta(hasta);
+            this.priceRepository.save(priceToUpdate.get());
         }
 
-        return priceToUpdate;
+        return priceToUpdate.isPresent()?priceToUpdate.get():null;
     }
     public List getAllPrices(){
         List<PriceResponse> response = new ArrayList<>();

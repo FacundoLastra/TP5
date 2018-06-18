@@ -1,9 +1,6 @@
 package com.tp5.tp5.Models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name="price")
-@Getter @Setter @NoArgsConstructor @EqualsAndHashCode
+@Getter @Setter @NoArgsConstructor @EqualsAndHashCode @AllArgsConstructor
 public class Price {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

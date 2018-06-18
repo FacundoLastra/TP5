@@ -1,7 +1,6 @@
 package com.tp5.tp5.Models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -9,8 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "cabin_route")
-@NoArgsConstructor
-@Getter
+@Getter @Setter @NoArgsConstructor @EqualsAndHashCode @AllArgsConstructor
 public class Cabin_Route {
 
     @Id

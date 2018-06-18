@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+@SpringBootTest //marco que es un test
 public class TestAirportService {
 
     private AirportsService testAirportService;
@@ -29,7 +29,6 @@ public class TestAirportService {
         when(this.testAirportRespository.findByIata("EZE")).thenReturn(java.util.Optional.of(new Airports()));
         when(this.testAirportRespository.save(this.testAir)).thenReturn(this.testAir);
         this.testAirportService = new AirportsService(this.testAirportRespository,this.testCityRepository);
-
     }
 
     @Test

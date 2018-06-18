@@ -5,6 +5,7 @@ import com.tp5.tp5.Services.CabinService;
 import com.tp5.tp5.Services.RouteService;
 import com.tp5.tp5.payload.request.CabinRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,9 +30,9 @@ public class CabinController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteCabin(@PathVariable long id){
-        this.cabinService.deleteCabin(id);
+    public HttpStatus deleteCabin(@PathVariable long id){
 
+        return this.cabinService.deleteCabin(id);
     }
 
     @PostMapping("/update")

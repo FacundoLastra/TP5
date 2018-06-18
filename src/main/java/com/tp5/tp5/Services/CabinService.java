@@ -3,52 +3,72 @@ package com.tp5.tp5.Services;
 import com.tp5.tp5.Models.Cabin;
 import com.tp5.tp5.Repository.CabinRepository;
 import com.tp5.tp5.payload.response.CabinResponse;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service @AllArgsConstructor
 public class CabinService {
 
     @Autowired
     CabinRepository cabinRepository;
 
-    public Cabin saveCabin(String name){
-        Optional<Cabin> cabinOptional = this.cabinRepository.findByName(name);
+    public Cabin saveCabin(String name) {
 
-        if (!cabinOptional.isPresent()){
-            this.cabinRepository.save(new Cabin(name));
+        Optional<Cabin> cabin = this.cabinRepository.findByName(name);
+        Cabin newCabin = null;
+
+        if (!cabin.isPresent()){
+
+            newCabin = this.cabinRepository.save(new Cabin(name));
         }
-        return this.cabinRepository.findByName(name).get();
+
+        return newCabin; //Ver que queremos que retorne....
     }
 
-    public void modifyCabin(long id,String name){
+    public HttpStatus modifyCabin(long id, String name) {
 
-        Cabin cabin= this.cabinRepository.findById(id).get();
+        Optional<Cabin> cabin = this.cabinRepository.findById(id);
 
-        if (cabin != null){
-            cabin.setName(name);
-            this.cabinRepository.save(cabin);
+        if (cabin.isPresent()){
+
+            cabin.get().setName(name);
+            this.cabinRepository.save(cabin.get());
         }
+
+        return HttpStatus.valueOf ((cabin.isPresent()==true) ? (HttpServletResponse.SC_OK) : (HttpServletResponse.SC_CREATED));
     }
 
-    public void deleteCabin (long id){
+    public HttpStatus deleteCabin (long id) {
 
-        this.cabinRepository.deleteById(id);
+        Optional<Cabin> cabin = this.cabinRepository.findById(id);
+
+        if (cabin.isPresent()){
+
+            this.cabinRepository.deleteById(id); }
+
+        return HttpStatus.valueOf ((cabin.isPresent()==true) ? (HttpServletResponse.SC_OK) : (HttpServletResponse.SC_CREATED));
     }
 
-    public List getAllCabins(){
+    public List getAllCabins() {
+
         List<CabinResponse> response = new ArrayList<>();
         this.cabinRepository.findAll().forEach(c->response.add(new CabinResponse(c)));
+
         return response;
     }
 
-    public Cabin getbyId(long id){
+    public Cabin getById(long id){
 
-        return this.cabinRepository.findById(id).get();
+        Optional<Cabin> cabin = this.cabinRepository.findById(id);
+
+        return cabin.get(); //Si es null la controladora en este caso debe crear el HTTP status.
     }
 
 
